@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">s331392mappe1comtobiasstrom</string>
+    <string name="start_game">Start</string>
+    <string name="statistics">Statistikker</string>
+    <string name="preferences">Preferanser</string>
+    <string name="main_bg_picutre_des">Bakgrunnsbilde</string>
+    <string name="btn_game_0">0</string>
+    <string name="btn_game_1">1</string>
+    <string name="btn_game_2">2</string>
+    <string name="btn_game_3">3</string>
+    <string name="btn_game_4">4</string>
+    <string name="btn_game_5">5</string>
+    <string name="btn_game_6">6</string>
+    <string name="btn_game_7">7</string>
+    <string name="btn_game_8">8</string>
+    <string name="btn_game_9">9</string>
+    <string name="btn_game_submit">Sjekk!</string>
+
 </resources>
