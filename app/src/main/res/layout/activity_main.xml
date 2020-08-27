@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:layoutDescription="@xml/activity_main_scene"
-    tools:context=".MainActivity">
+    android:layout_margin="10dp">
 
     <TextView
         android:id="@+id/txt_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/app_name" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="268dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/main_bg_picutre_des"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:text="@string/app_name"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/start_game" />
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:text="@string/start_game"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_statistics"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_statistics"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/statistics" />
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:text="@string/statistics"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_preferences"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_preferences"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/preferences" />
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:text="@string/preferences"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

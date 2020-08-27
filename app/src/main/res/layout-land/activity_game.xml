@@ -28,11 +28,9 @@
 
     <TableLayout
         android:id="@+id/table_keypad"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -42,7 +40,6 @@
                 android:id="@+id/btn_game_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/btn_game_1" />
 
             <Button
@@ -58,11 +55,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/btn_game_3" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btn_game_4"
@@ -78,17 +70,17 @@
                 android:layout_weight="1"
                 android:text="@string/btn_game_5" />
 
-            <Button
-                android:id="@+id/btn_game_6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/btn_game_6" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_game_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_game_6" />
 
             <Button
                 android:id="@+id/btn_game_7"
@@ -110,11 +102,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/btn_game_9" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btn_game_0"
@@ -122,14 +109,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/btn_game_0" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="497dp"
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btn_game_submit"
-                android:layout_width="wrap_content"
+                android:layout_width="145dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="@string/btn_game_submit" />
         </TableRow>
-    </TableLayout>
 
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
