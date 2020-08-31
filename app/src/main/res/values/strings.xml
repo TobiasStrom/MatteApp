@@ -3,6 +3,7 @@
     <string name="start_game">Start</string>
     <string name="statistics">Statistikker</string>
     <string name="preferences">Preferanser</string>
+    <string name="chooseAmout">Hvor mange spørsmål</string>
     <string name="main_bg_picutre_des">Bakgrunnsbilde</string>
     <string name="btn_game_0">0</string>
     <string name="btn_game_1">1</string>
@@ -17,10 +18,18 @@
     <string name="btn_game_submit">Sjekk!</string>
     <string name="btn_stats_reset">Nullstill!</string>
     <string name="txt_stats_title">Dine statistikker</string>
+    <string name="question5">5 Spørsmål</string>
+    <string name="question10">10 Spørsmål</string>
+    <string name="question25">25 Spørsmål</string>
+    <string name="chooseLanguage">Velg språk</string>
+    <string name="norwegian">Norsk</string>
+    <string name="german">Tysk</string>
+    <string name="confirm">Bekreft</string>
     <!--Disse strenger burde defineres av programmet, er definert kun for testing -->
     <string name="txt_question_test">23 + 42 = ?</string>
     <string name="txt_stats_test">Riktige: 20 Gale: 10</string>
     <string name="txt_stats_correct_test">Riktige: 20</string>
     <string name="txt_stats_wrong_test">Gale: 10</string>
+    
 
 </resources>

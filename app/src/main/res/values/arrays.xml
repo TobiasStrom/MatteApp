@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="questions">
+        <!--Question 1-->
+        <item>
+            <question>2+5</question>
+            <answer>7</answer>
+        </item>
+        <!--Question 2-->
+        <item>
+            <question>6+3</question>
+            <answer>9</answer>
+        </item>
+        <!--Question 3-->
+        <item>
+            <question>23+2</question>
+            <answer>25</answer>
+        </item>
+        <!--Question 4-->
+        <item>
+            <question>35+4</question>
+            <answer>39</answer>
+        </item>
+        <!--Question 5-->
+        <item>
+            <question>2+19</question>
+            <answer>21</answer>
+        </item>
+        <!--Question 6-->
+        <item>
+            <question>15+15</question>
+            <answer>30</answer>
+        </item>
+        <!--Question 7-->
+        <item>
+            <question>13+9</question>
+            <answer>22</answer>
+        </item>
+        <!--Question 8-->
+        <item>
+            <question>75+25</question>
+            <answer>100</answer>
+        </item>
+        <!--Question 9-->
+        <item>
+            <question>23+23</question>
+            <answer>46</answer>
+        </item>
+        <!--Question 10-->
+        <item>
+            <question>27+51</question>
+            <answer>78</answer>
+        </item>
+        <!--Question 11-->
+        <item>
+            <question>45+12</question>
+            <answer>57</answer>
+        </item>
+        <!--Question 12-->
+        <item>
+            <question>39+15</question>
+            <answer>54</answer>
+        </item>
+        <!--Question 13-->
+        <item>
+            <question>45+3</question>
+            <answer>48</answer>
+        </item>
+        <!--Question 14-->
+        <item>
+            <question>12+8</question>
+            <answer>20</answer>
+        </item>
+        <!--Question 15-->
+        <item>
+            <question>16+8</question>
+            <answer>24</answer>
+        </item>
+        <!--Question 16-->
+        <item>
+            <question>34</question>
+            <answer></answer>
+        </item>
+        <!--Question 17-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+        <!--Question 18-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+        <!--Question 19-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+        <!--Question 20-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+        <!--Question 21-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+        <!--Question 22-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+        <!--Question 23-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+        <!--Question 24-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+        <!--Question 25-->
+        <item>
+            <question></question>
+            <answer></answer>
+        </item>
+
+
+    </string-array>
+</resources>
