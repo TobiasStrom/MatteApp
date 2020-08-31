@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">s331392mappe1comtobiasstrom</string>
+    <string name="preferences">Preferanser</string>
+    <string name="chooseAmout">Hvor mange spørsmål</string>
+    <string name="question5">5 Spørsmål</string>
+    <string name="question10">10 Spørsmål</string>
+    <string name="question25">25 Spørsmål</string>
+    <string name="chooseLanguage">Velg språk</string>
+    <string name="norwegian">Norsk</string>
+    <string name="german">Tysk</string>
+    <string name="confirm">Bekreft</string>
 </resources>
