@@ -33,7 +33,7 @@
 
     <TableLayout
         android:id="@+id/table_keypad"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -145,8 +145,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="@string/remove"
                 android:onClick="bntRemoveText"
+                android:text="@string/remove"
                 android:textAlignment="center" />
 
             <Button
