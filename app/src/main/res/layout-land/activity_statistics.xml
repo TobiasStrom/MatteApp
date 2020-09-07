@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_stats_reset"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_stats_title">
@@ -51,25 +51,31 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_stats_correct" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btn_stats_reset"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/btn_stats_reset"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCloseStat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    <Button
-        android:id="@+id/btnCloseStat"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="btnExitStatistics"
-        android:text="@string/exit"
-        android:textSize="18sp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_stats_reset"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/btn_stats_reset"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnCloseStat"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="btnExitStatistics"
+            android:text="@string/exit"
+            android:textSize="18sp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
