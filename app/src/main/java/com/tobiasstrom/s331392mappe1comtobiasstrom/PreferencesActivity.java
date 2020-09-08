@@ -9,12 +9,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
 public class PreferencesActivity extends AppCompatActivity {
+    private RadioGroup radioGroup;
+    private RadioGroup radioGroupLanguage;
 
     public void settland(String landskode) {
         Resources res = getResources();
@@ -65,5 +69,6 @@ public class PreferencesActivity extends AppCompatActivity {
         setResult(RESULT_OK);
         this.finish();
     }
+
 
 }

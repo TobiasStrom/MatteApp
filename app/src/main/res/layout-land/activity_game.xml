@@ -73,6 +73,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center_horizontal"
             android:inputType="numberSigned"
             android:textAlignment="center"
@@ -209,6 +211,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="@string/btn_game_submit"
+                android:onClick="btnCheck"
                 android:textSize="18sp" />
         </TableRow>
 
