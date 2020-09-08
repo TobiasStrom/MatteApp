@@ -133,6 +133,7 @@
         android:layout_marginBottom="8dp"
         android:minWidth="140dp"
         android:text="@string/confirm"
+        android:onClick="submitChanges"
         android:textSize="18sp"
         android:onClick="btnConfirm"
         app:layout_constraintBottom_toTopOf="@+id/btnExit"

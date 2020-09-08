@@ -3,13 +3,42 @@ package com.tobiasstrom.s331392mappe1comtobiasstrom;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    public void settland(String landskode) {
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration cf = res.getConfiguration();
+        cf.setLocale(new Locale(landskode));
+        res.updateConfiguration(cf,dm);
+        getSharedPreferences("LANGUAGE",MODE_PRIVATE).edit().putString("landskode",landskode).apply();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == 555) {
+            if (resultCode == RESULT_OK) {
+                settland(getSharedPreferences("LANGUAGE",MODE_PRIVATE).getString("landskode",""));
+                recreate();
+            }
+
+        }
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        settland(getSharedPreferences("LANGUAGE",MODE_PRIVATE).getString("landskode",""));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -18,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void btnPreferences(View view){
-        startActivity(new Intent(this, PreferencesActivity.class));
+        Intent intent = new Intent(this,PreferencesActivity.class);
+        startActivityForResult(intent,555);
+        //startActivity(new Intent(this, PreferencesActivity.class));
     }
 
     public void btnStatistics(View view) {
