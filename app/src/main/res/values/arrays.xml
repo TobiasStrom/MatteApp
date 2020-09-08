@@ -2,131 +2,106 @@
 <resources>
     <string-array name="questions">
         <!--Question 1-->
-        <item>
-            <question>2+5</question>
-            <answer>7</answer>
-        </item>
+        <item>2+5</item>
         <!--Question 2-->
-        <item>
-            <question>6+3</question>
-            <answer>9</answer>
-        </item>
+        <item>6+3</item>
         <!--Question 3-->
-        <item>
-            <question>23+2</question>
-            <answer>25</answer>
-        </item>
+        <item>23+2</item>
         <!--Question 4-->
-        <item>
-            <question>35+4</question>
-            <answer>39</answer>
-        </item>
+        <item>35+4</item>
         <!--Question 5-->
-        <item>
-            <question>2+19</question>
-            <answer>21</answer>
-        </item>
+        <item>2+19</item>
         <!--Question 6-->
-        <item>
-            <question>15+15</question>
-            <answer>30</answer>
-        </item>
+        <item>15+15</item>
         <!--Question 7-->
-        <item>
-            <question>13+9</question>
-            <answer>22</answer>
-        </item>
+        <item>13+9</item>
         <!--Question 8-->
-        <item>
-            <question>75+25</question>
-            <answer>100</answer>
-        </item>
+        <item>75+25</item>
         <!--Question 9-->
-        <item>
-            <question>23+23</question>
-            <answer>46</answer>
-        </item>
+        <item>23+23</item>
         <!--Question 10-->
-        <item>
-            <question>27+51</question>
-            <answer>78</answer>
-        </item>
+        <item>27+51</item>
         <!--Question 11-->
-        <item>
-            <question>45+12</question>
-            <answer>57</answer>
-        </item>
+        <item>45+12</item>
         <!--Question 12-->
-        <item>
-            <question>39+15</question>
-            <answer>54</answer>
-        </item>
+        <item>39+15</item>
         <!--Question 13-->
-        <item>
-            <question>45+3</question>
-            <answer>48</answer>
-        </item>
+        <item>45+3</item>
         <!--Question 14-->
-        <item>
-            <question>12+8</question>
-            <answer>20</answer>
-        </item>
+        <item>12+8</item>
         <!--Question 15-->
-        <item>
-            <question>16+8</question>
-            <answer>24</answer>
-        </item>
+        <item>16+8</item>
         <!--Question 16-->
-        <item>
-            <question>34</question>
-            <answer></answer>
-        </item>
+        <item>30+4</item>
         <!--Question 17-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
+        <item>5+7</item>
         <!--Question 18-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
+        <item>4+6</item>
         <!--Question 19-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
+        <item>8+12</item>
         <!--Question 20-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
+        <item>13+7</item>
         <!--Question 21-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
+        <item>14+7</item>
         <!--Question 22-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
+        <item>6+2</item>
         <!--Question 23-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
+        <item>9+7</item>
         <!--Question 24-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
+        <item>9+7</item>
         <!--Question 25-->
-        <item>
-            <question></question>
-            <answer></answer>
-        </item>
-
-
+        <item>6+3</item>
+    </string-array>
+    <string-array name="answers">
+        <!--Question 1-->
+        <item>7</item>
+        <!--Question 2-->
+        <item>9</item>
+        <!--Question 3-->
+        <item>25</item>
+        <!--Question 4-->
+        <item>39</item>
+        <!--Question 5-->
+        <item>21</item>
+        <!--Question 6-->
+        <item>30</item>
+        <!--Question 7-->
+        <item>22</item>
+        <!--Question 8-->
+        <item>100</item>
+        <!--Question 9-->
+        <item>46</item>
+        <!--Question 10-->
+        <item>78</item>
+        <!--Question 11-->
+        <item>57</item>
+        <!--Question 12-->
+        <item>54</item>
+        <!--Question 13-->
+        <item>48</item>
+        <!--Question 14-->
+        <item>20</item>
+        <!--Question 15-->
+        <item>24</item>
+        <!--Question 16-->
+        <item>34</item>
+        <!--Question 17-->
+        <item>12</item>
+        <!--Question 18-->
+        <item>10</item>
+        <!--Question 19-->
+        <item>20</item>
+        <!--Question 20-->
+        <item>20</item>
+        <!--Question 21-->
+        <item>21</item>
+        <!--Question 22-->
+        <item>8</item>
+        <!--Question 23-->
+        <item>16</item>
+        <!--Question 24-->
+        <item>16</item>
+        <!--Question 25-->
+        <item>9</item>
     </string-array>
 </resources>

@@ -34,6 +34,12 @@
     <string name="txt_stats_test">Riktige: 20 Gale: 10</string>
     <string name="txt_stats_correct_test">Riktige: 20</string>
     <string name="txt_stats_wrong_test">Gale: 10</string>
-    
+    <string name="sure_exit">Sikker på at du vil avlsutte spillet</string>
+
+    <!-- Dette er bare til test -->
+
+    <string name="ok">Avslutt spill</string>
+    <string name="ikkeok">Avbryt</string>
+
 
 </resources>
