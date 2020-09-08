@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
 
     <TextView
         android:id="@+id/txtPreferences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/preferences"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,117 +18,137 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtChooseAmout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/chooseAmout"
-        android:textAlignment="center"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPreferences"
-        android:gravity="center_horizontal" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPreferences">
 
-    <Button
-        android:id="@+id/btn5Question"
+        <TextView
+            android:id="@+id/txtChooseAmout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/chooseAmout"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtChooseAmout">
+
+            <RadioButton
+                android:id="@+id/radio5Question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/question5"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radio10Question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question10"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radio25Question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/question25"
+                android:textSize="18sp" />
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:minWidth="140dp"
-        android:text="@string/question5"
+        app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtChooseAmout" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-    <Button
-        android:id="@+id/btn10Question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginTop="8dp"
-        android:minWidth="140dp"
-        android:text="@string/question10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn5Question" />
+        <TextView
+            android:id="@+id/txtChooseLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:minWidth="140dp"
+            android:text="@string/chooseLanguage"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn25Question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/question25"
-        android:minWidth="140dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn10Question" />
+        <RadioGroup
+            android:id="@+id/radioGroupLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtChooseLanguage">
 
-    <Button
-        android:id="@+id/btnNorwegian"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:minWidth="140dp"
-        android:text="@string/norwegian"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtChooseLanguage" />
+            <RadioButton
+                android:id="@+id/radioNorwegian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/norwegian"
+                android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/btnGerman"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:minWidth="140dp"
-        android:text="@string/german"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNorwegian" />
+            <RadioButton
+                android:id="@+id/radioGerman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/german"
+                android:textSize="18sp" />
+        </RadioGroup>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/txtChooseLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:minWidth="140dp"
-        android:text="@string/chooseLanguage"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn25Question"
-        android:gravity="center_horizontal" />
 
     <Button
         android:id="@+id/btnConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:minWidth="140dp"
         android:text="@string/confirm"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        android:onClick="submitChanges"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnExit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/exit"
+        android:id="@+id/btnExit"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         android:minWidth="140dp"
         android:onClick="btnExitPreferences"
+        android:text="@string/exit"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
