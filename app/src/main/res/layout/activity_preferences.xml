@@ -98,6 +98,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioGroup
+            android:id="@+id/radioGroupLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -132,6 +133,7 @@
         android:layout_marginBottom="8dp"
         android:minWidth="140dp"
         android:text="@string/confirm"
+        android:onClick="submitChanges"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnExit"
         app:layout_constraintEnd_toEndOf="parent"
