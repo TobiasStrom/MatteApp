@@ -87,13 +87,16 @@
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="@color/Magenta_Process"
         android:onClick="btnExitGame"
         android:text="@string/exit"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
+        style="?android:attr/buttonBarStyle"
         android:id="@+id/table_keypad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,42 +110,62 @@
 
             <Button
                 android:id="@+id/btn_game_1"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_1"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_2"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_2"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_3"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_3"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_4"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_4"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_5"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_5"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
         </TableRow>
@@ -153,42 +176,62 @@
 
             <Button
                 android:id="@+id/btn_game_6"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_6"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_7"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_7"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_8"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_8"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_9"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_9"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_0"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:text="@string/btn_game_0"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
         </TableRow>
 
@@ -198,20 +241,28 @@
 
             <Button
                 android:id="@+id/removeGame"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
+                android:background="@color/Magenta_Process"
                 android:onClick="bntRemoveText"
                 android:text="@string/remove"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_game_submit"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="@string/btn_game_submit"
+                android:background="@color/Inchworm"
                 android:onClick="btnCheck"
+                android:text="@string/btn_game_submit"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
         </TableRow>
 

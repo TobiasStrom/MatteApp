@@ -113,6 +113,7 @@
 
 
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,18 +124,26 @@
 
         <Button
             android:id="@+id/btnConfirm"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:text="@string/confirm"
+            android:layout_margin="8dp"
+            android:background="@color/Inchworm"
             android:onClick="submitChanges"
+            android:text="@string/confirm"
+            android:textColor="@android:color/black"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnClose"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:text="@string/exit"
+            android:layout_margin="8dp"
+            android:background="@color/Magenta_Process"
             android:onClick="btnExitPreferences"
+            android:text="@string/exit"
+            android:textColor="@android:color/white"
             android:textSize="18sp" />
 
     </LinearLayout>
