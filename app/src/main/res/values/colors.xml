@@ -3,4 +3,8 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="Inchworm">#A7ED4C</color>
+    <color name="Magenta_Process">#ED0086</color>
+    <color name="Dodger_Blue">#1E99F7</color>
+    <color name="Yellow">#EBFF00</color>
 </resources>

@@ -28,28 +28,33 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp">
 
             <Button
                 android:id="@+id/btn_start"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:background="@color/Inchworm"
                 android:onClick="btnStartGame"
                 android:text="@string/start_game" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp">
 
             <Button
                 android:id="@+id/btn_statistics"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:background="@color/Dodger_Blue"
                 android:onClick="btnStatistics"
-                android:text="@string/statistics" />
+                android:text="@string/statistics"
+                android:textColor="@android:color/white" />
         </TableRow>
 
         <TableRow
@@ -61,8 +66,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:background="@color/Magenta_Process"
                 android:onClick="btnPreferences"
-                android:text="@string/preferences" />
+                android:text="@string/preferences"
+                android:textColor="@android:color/white" />
         </TableRow>
 
     </TableLayout>
