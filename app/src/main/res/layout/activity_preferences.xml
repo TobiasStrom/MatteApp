@@ -135,7 +135,6 @@
         android:text="@string/confirm"
         android:onClick="submitChanges"
         android:textSize="18sp"
-        android:onClick="btnConfirm"
         app:layout_constraintBottom_toTopOf="@+id/btnExit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

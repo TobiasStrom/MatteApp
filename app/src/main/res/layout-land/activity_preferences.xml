@@ -85,6 +85,7 @@
             </RadioGroup>
 
             <RadioGroup
+                android:id="@+id/radioGroupLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -125,14 +126,15 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:text="@string/confirm"
+            android:onClick="submitChanges"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnClose"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:onClick="btnExitPreferences"
             android:text="@string/exit"
+            android:onClick="btnExitPreferences"
             android:textSize="18sp" />
 
     </LinearLayout>
