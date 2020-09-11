@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:background="#FFFFFF">
+    android:layout_margin="10dp">
 
     <TextView
         android:id="@+id/txt_stats_title"
@@ -66,7 +65,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/Magenta_Process"
+        android:background="@xml/rounded_button_magenta"
         android:text="@string/btn_stats_reset"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -82,7 +81,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/Inchworm"
+        android:background="@xml/rounded_button_inchworm"
         android:onClick="btnExitStatistics"
         android:text="@string/exit"
         android:textSize="18sp"
