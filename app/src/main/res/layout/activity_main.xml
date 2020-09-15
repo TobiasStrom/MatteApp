@@ -4,8 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="269dp"
+        android:layout_height="269dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26"
+        app:srcCompat="@drawable/matte_app_logo" />
 
     <TextView
         android:id="@+id/txt_title"
@@ -26,9 +42,7 @@
         android:id="@+id/btn_start"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="8dp"
         android:background="@xml/rounded_button_inchworm"
         android:contentDescription="@string/start_game"
         android:onClick="btnStartGame"
@@ -37,67 +51,54 @@
         android:shadowDy="2"
         android:src="@android:drawable/ic_media_play"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_statistics"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btn_statistics"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@xml/rounded_button_blue"
-        android:contentDescription="@string/statistics"
-        android:onClick="btnStatistics"
-        android:scaleType="fitCenter"
-        android:src="@android:drawable/ic_menu_sort_by_size"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btn_preferences"
-        android:layout_width="180dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="@xml/rounded_button_magenta"
-        android:contentDescription="@string/preferences"
-        android:onClick="btnPreferences"
-        android:scaleType="fitCenter"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:src="@android:drawable/ic_menu_manage"
-        app:layout_constraintStart_toEndOf="@+id/btn_statistics"
-        app:layout_constraintTop_toTopOf="@+id/btn_statistics" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="269dp"
-        android:layout_height="269dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toTopOf="@+id/btn_start"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26"
-        app:srcCompat="@drawable/matte_app_logo" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_statistics"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@xml/rounded_button_blue"
+            android:contentDescription="@string/statistics"
+            android:onClick="btnStatistics"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/btn_preferences"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@xml/rounded_button_magenta"
+            android:contentDescription="@string/preferences"
+            android:onClick="btnPreferences"
+            android:scaleType="fitCenter"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:src="@android:drawable/ic_menu_manage" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
