@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(new Intent(this, PreferencesActivity.class));
         Intent intent=new Intent(this,SetPreferencesActivity.class);
         startActivity(intent);
+
     }
 
     public void btnStatistics(View view) {
