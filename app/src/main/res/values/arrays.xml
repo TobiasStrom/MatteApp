@@ -110,16 +110,16 @@
         <item>@string/question25</item>
     </string-array>
     <string-array name="questionAmountListValues">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
     </string-array>
     <string-array name="chooseLanguage">
         <item>@string/norwegian</item>
         <item>@string/german</item>
     </string-array>
     <string-array name="chooseLanguageListValues">
-        <item>1</item>
-        <item>2</item>
+        <item>no</item>
+        <item>de</item>
     </string-array>
 </resources>

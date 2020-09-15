@@ -1,16 +1,22 @@
 package com.tobiasstrom.s331392mappe1comtobiasstrom;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
 
     public void settland(String landskode) {
         Resources res = getResources();
@@ -20,24 +26,24 @@ public class MainActivity extends AppCompatActivity {
             cf.setLocale(new Locale(landskode));
         }
         res.updateConfiguration(cf,dm);
-        getSharedPreferences("LANGUAGE",MODE_PRIVATE).edit().putString("landskode",landskode).apply();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode == 555) {
-            if (resultCode == RESULT_OK) {
-                settland(getSharedPreferences("LANGUAGE",MODE_PRIVATE).getString("landskode",""));
-                recreate();
-            }
-
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            settland(sharedPreferences.getString("languagePref",""));
+            recreate();
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        settland(getSharedPreferences("LANGUAGE",MODE_PRIVATE).getString("landskode",""));
+        Log.d("ONcreate","hello");
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        settland(sharedPreferences.getString("languagePref", ""));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -51,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         //Intent intent = new Intent(this,PreferencesActivity.class);
         //startActivityForResult(intent,555);
         //startActivity(new Intent(this, PreferencesActivity.class));
-        Intent intent=new Intent(this,SetPreferencesActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(this,SetPreferencesActivity.class);
+        startActivityForResult(intent,555);
 
     }
 

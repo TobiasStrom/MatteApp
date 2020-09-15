@@ -5,9 +5,11 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +31,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     private String[] questions;
     private String[] answers;
     private ArrayList<Integer> selectedQuestions = new ArrayList();
-    private int numberOfQuestions = 1;
+    private int numberOfQuestions = 10; //default verdi dersom den fantes ikke i preferanser (just in case)
     private int whichQuestion = 0;
     TextView txt_game_question;
     TextView txt_right_awser;
@@ -50,8 +52,14 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     private static final String STATE_RIGHTAWSER = "RightAwser";
     private static final String STATE_WRONGAWSER = "WrongAwser";
 
+    private void setAmountOfQuestions(String preferance) {
+        try {
+            numberOfQuestions = Integer.parseInt(preferance);
+        } catch (Exception e) {
+            //gjør ingenting dersom default verdi er deklarert
+        }
 
-
+    }
 
     public void settland(String landskode) {
         Resources res = getResources();
@@ -59,12 +67,14 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         Configuration cf = res.getConfiguration();
         cf.setLocale(new Locale(landskode));
         res.updateConfiguration(cf,dm);
-        getSharedPreferences("LANGUAGE",MODE_PRIVATE).edit().putString("landskode",landskode).apply();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        settland(getSharedPreferences("LANGUAGE",MODE_PRIVATE).getString("landskode",""));
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        settland(sharedPreferences.getString("languagePref",""));
+        setAmountOfQuestions(sharedPreferences.getString("questionPref",""));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
