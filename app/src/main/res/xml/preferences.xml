@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:defaultValue="false"
+    android:title="@string/preferences">
+    <PreferenceCategory android:title="string/question_amount_setting_group">
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/questionAmount"
+            android:entryValues="@array/questionAmountListValues"
+            android:key="questionPref"
+            android:title="@string/chooseAmout" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="string/language_setting_group">
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/chooseLanguage"
+            android:entryValues="@array/chooseLanguageListValues"
+            android:key="languagePref"
+            android:title="@string/chooseLanguage" />
+    </PreferenceCategory>
+</PreferenceScreen>

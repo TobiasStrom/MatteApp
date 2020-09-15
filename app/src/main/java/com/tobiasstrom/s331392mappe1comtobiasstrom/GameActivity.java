@@ -1,6 +1,7 @@
 package com.tobiasstrom.s331392mappe1comtobiasstrom;
 
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,12 +23,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity implements MyDialog.DialogClickListener {
+    private static final String TAG = "GameActivity";
 
     private EditText newNumber;
     private String[] questions;
     private String[] answers;
     private ArrayList<Integer> selectedQuestions = new ArrayList();
-    private int numberOfQuestions = 5;
+    private int numberOfQuestions = 1;
     private int whichQuestion = 0;
     TextView txt_game_question;
     TextView txt_right_awser;
@@ -34,6 +37,10 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     private int questionNumber = 0;
     private int rightAwser = 0;
     private int wrongAwser = 0;
+    Dialog myDialog;
+    Button btnClose;
+    TextView txt_result_of, txt_result;
+    ArrayList<Statistics> statistics = new ArrayList<>();
 
 
     private static final String STATE_NUMBEROFQUESTION = "NumberOfQuestion";
@@ -108,6 +115,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_wrong_awser.setText(wrongAwser+"");
 
         nextQuestion();
+        myDialog = new Dialog(this);
     }
 
     public void btnExitGame(View view) {
@@ -130,10 +138,10 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     }
 
     public void btnCheck(View view){
-        chechQuestion();
+        chechQuestion(view);
     }
 
-    public void chechQuestion(){
+    public void chechQuestion(View view){
         if (whichQuestion < numberOfQuestions) {
             String youAnswerd = newNumber.getText().toString();
 
@@ -159,13 +167,20 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
                 wrongAwser++;
                 txt_wrong_awser.setText(wrongAwser+"");
             }
-            txt_game_question.setText("Du er ferdig");
-            Context context = getApplicationContext();
-            CharSequence text = "Du klarte " + wrongAwser + " feil";
-            int duration = Toast.LENGTH_SHORT;
+            //txt_game_question.setText("Du er ferdig");
+            //Context context = getApplicationContext();
+            //CharSequence text = "Du klarte " + wrongAwser + " feil";
+            //int duration = Toast.LENGTH_SHORT;
 
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+            showPopup(view);
+            Statistics anser = new Statistics(rightAwser,numberOfQuestions);
+            Statistics statistics1 = new Statistics(2,6);
+            statistics.add(statistics1);
+            statistics.add(anser);
+            Log.d(TAG, statistics.toString());
+
+            //Toast toast = Toast.makeText(context, text, duration);
+            //toast.show();
         }
     }
 
@@ -208,6 +223,27 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_right_awser.setText(rightAwser+"");
         txt_wrong_awser.setText(wrongAwser+"");
 
+    }
+    public void showPopup(View v){
+
+        txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
+        txt_result_of = (TextView) myDialog.findViewById(R.id.txt_result_of);
+
+
+
+        myDialog.setContentView(R.layout.custon_pop_up);
+
+        //txt_result.setTextSize(50);
+        btnClose = (Button) myDialog.findViewById(R.id.btn_Close);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+                finish();
+            }
+        });
+        myDialog.show();
+        //txt_result.setText("Hei");
     }
 
 

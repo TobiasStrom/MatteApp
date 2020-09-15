@@ -104,4 +104,23 @@
         <!--Question 25-->
         <item>9</item>
     </string-array>
+    <string-array name="questionAmount">
+        <item>@string/question5</item>
+        <item>@string/question10</item>
+        <item>@string/question25</item>
+    </string-array>
+    <string-array name="questionAmountListValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="chooseLanguage">
+        <item>@string/norwegian</item>
+        <item>@string/german</item>
+    </string-array>
+    <string-array name="chooseLanguageListValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>
