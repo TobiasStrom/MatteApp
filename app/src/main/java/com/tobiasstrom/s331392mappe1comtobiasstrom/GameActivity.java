@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -39,8 +40,8 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     private int wrongAwser = 0;
     Dialog myDialog;
     Button btnClose;
+    Button btn_restart;
     TextView txt_result_of, txt_result;
-    ArrayList<Statistics> statistics = new ArrayList<>();
 
 
     private static final String STATE_NUMBEROFQUESTION = "NumberOfQuestion";
@@ -57,7 +58,9 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration cf = res.getConfiguration();
-        cf.setLocale(new Locale(landskode));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            cf.setLocale(new Locale(landskode));
+        }
         res.updateConfiguration(cf,dm);
         getSharedPreferences("LANGUAGE",MODE_PRIVATE).edit().putString("landskode",landskode).apply();
     }
@@ -107,14 +110,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         btn_game_9.setOnClickListener(listener);
 
         //Henter spørsmålene fra array.xml og legger det inn i et array
-        questions = getResources().getStringArray(R.array.questions);
-        answers = getResources().getStringArray(R.array.answers);
-
-        txt_game_question.setText(questions[questionNumber]+ " =");
-        txt_right_awser.setText(rightAwser+"");
-        txt_wrong_awser.setText(wrongAwser+"");
-
-        nextQuestion();
+        restartGame();
         myDialog = new Dialog(this);
     }
 
@@ -174,10 +170,8 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
 
             showPopup(view);
             Statistics anser = new Statistics(rightAwser,numberOfQuestions);
-            Statistics statistics1 = new Statistics(2,6);
-            statistics.add(statistics1);
-            statistics.add(anser);
-            Log.d(TAG, statistics.toString());
+            StatisticsBrain.statistics.add(anser);
+
 
             //Toast toast = Toast.makeText(context, text, duration);
             //toast.show();
@@ -231,10 +225,12 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
 
 
 
-        myDialog.setContentView(R.layout.custon_pop_up);
 
-        //txt_result.setTextSize(50);
+
+        myDialog.setContentView(R.layout.custon_pop_up);
+        btn_restart = (Button) myDialog.findViewById(R.id.btn_restart);
         btnClose = (Button) myDialog.findViewById(R.id.btn_Close);
+
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -242,8 +238,35 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
                 finish();
             }
         });
+        btn_restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restartGame();
+                myDialog.dismiss();
+
+            }
+        });
+
         myDialog.show();
         //txt_result.setText("Hei");
+    }
+    public void restartGame(){
+        whichQuestion = 0;
+        questionNumber = 0;
+        rightAwser = 0;
+        wrongAwser = 0;
+
+        newNumber.setText("");
+        questions = getResources().getStringArray(R.array.questions);
+        answers = getResources().getStringArray(R.array.answers);
+
+        txt_game_question.setText(questions[questionNumber]+ " =");
+        txt_right_awser.setText(rightAwser+"");
+        txt_wrong_awser.setText(wrongAwser+"");
+
+        nextQuestion();
+
+
     }
 
 
