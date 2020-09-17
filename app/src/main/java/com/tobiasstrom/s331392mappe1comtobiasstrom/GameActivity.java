@@ -15,8 +15,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import java.util.Collections;
 import java.util.Locale;
 
 import androidx.appcompat.app.AlertDialog;
@@ -32,7 +34,9 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     private String[] questions;
     private String[] answers;
     private ArrayList<Integer> selectedQuestions = new ArrayList();
-    private int numberOfQuestions = 5; //default verdi dersom den finnes ikke i sharedPreferences
+    private ArrayList<Integer> randomAmount = new ArrayList<>();
+    private ArrayList<Statistics> statistics = new ArrayList<>();
+    private int numberOfQuestions = 5; //default verdi dersom den fantes ikke i preferanser (just in case)
     private int whichQuestion = 0;
     TextView txt_game_question;
     TextView txt_right_awser;
@@ -48,6 +52,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     ArrayList<Statistics> statistics = new ArrayList<>();
     SharedPreferences sharedPreferences;
     View view;
+
 
     private static final String STATE_NUMBEROFQUESTION = "NumberOfQuestion";
     private static final String STATE_WHICHQUESTION = "WhitsQuestion";
@@ -76,12 +81,12 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         return value;
     }
 
+
     @Override
     public void onBackPressed() {
         DialogFragment dialog = new MyDialog();
         dialog.show(getFragmentManager(),"Avslutt");
     }
-
 
     public void setLang(String prefix) {
         Resources res = getResources();
@@ -92,6 +97,15 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             cf.setLocale(new Locale(prefix));
         }
         res.updateConfiguration(cf,dm);
+    }
+
+    public void randomArray(){
+        int i = 0;
+        while (i < 25){
+            randomAmount.add(i);
+            i++;
+        }
+        Collections.shuffle(randomAmount);
     }
 
     @Override
@@ -105,24 +119,24 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        randomArray();
 
-        newNumber = findViewById(R.id.inp_newNumber);
+        newNumber = (EditText) findViewById(R.id.inp_newNumber);
 
-        txt_game_question = findViewById(R.id.txt_game_question);
-        txt_right_awser = findViewById(R.id.txt_right_awser);
-        txt_wrong_awser = findViewById(R.id.txt_wrong_awser);
-        Button btn_game_0 = findViewById(R.id.btn_game_0);
-        Button btn_game_1 = findViewById(R.id.btn_game_1);
-        Button btn_game_2 = findViewById(R.id.btn_game_2);
-        Button btn_game_3 = findViewById(R.id.btn_game_3);
-        Button btn_game_4 = findViewById(R.id.btn_game_4);
-        Button btn_game_5 = findViewById(R.id.btn_game_5);
-        Button btn_game_6 = findViewById(R.id.btn_game_6);
-        Button btn_game_7 = findViewById(R.id.btn_game_7);
-        Button btn_game_8 = findViewById(R.id.btn_game_8);
-        Button btn_game_9 = findViewById(R.id.btn_game_9);
-        Button btn_remove = findViewById(R.id.btn_remove);
-        Button btn_game_submit = findViewById(R.id.btn_game_submit);
+        txt_game_question = (TextView)findViewById(R.id.txt_game_question);
+        txt_right_awser = (TextView)findViewById(R.id.txt_right_awser);
+        txt_wrong_awser = (TextView)findViewById(R.id.txt_wrong_awser);
+        Button btn_game_0 = (Button) findViewById(R.id.btn_game_0);
+        Button btn_game_1 = (Button) findViewById(R.id.btn_game_1);
+        Button btn_game_2 = (Button) findViewById(R.id.btn_game_2);
+        Button btn_game_3 = (Button) findViewById(R.id.btn_game_3);
+        Button btn_game_4 = (Button) findViewById(R.id.btn_game_4);
+        Button btn_game_5 = (Button) findViewById(R.id.btn_game_5);
+        Button btn_game_6 = (Button) findViewById(R.id.btn_game_6);
+        Button btn_game_7 = (Button) findViewById(R.id.btn_game_7);
+        Button btn_game_8 = (Button) findViewById(R.id.btn_game_8);
+        Button btn_game_9 = (Button) findViewById(R.id.btn_game_9);
+
 
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -152,9 +166,6 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_game_question.setText(String.valueOf(questions[questionNumber]));
         txt_right_awser.setText(String.valueOf(rightAwser));
         txt_wrong_awser.setText(String.valueOf(wrongAwser));
-
-
-
         nextQuestion();
 
         myDialog = new Dialog(this);
@@ -186,13 +197,21 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     }
 
     public void chechQuestion(View view){
+
         if (whichQuestion < numberOfQuestions) {
             String youAnswerd = newNumber.getText().toString();
+            if (youAnswerd.isEmpty()){
+                youAnswerd = "0";
+            }
+            Statistics anser = new Statistics(youAnswerd,answers[questionNumber],questions[questionNumber]);
+            statistics.add(anser);
+            Log.d(TAG, "chechQuestion: " + statistics.toString());
 
             if (answers[questionNumber].equals(youAnswerd)){
                 rightAwser++;
                 txt_right_awser.setText(String.valueOf(rightAwser));
                 newNumber.setText("");
+                
             }
             else {
                 wrongAwser++;
@@ -231,6 +250,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             Statistics statistics1 = new Statistics(2,6);
             statistics.add(statistics1);
             statistics.add(anser);
+
             Log.d(TAG, statistics.toString());
 
             //Toast toast = Toast.makeText(context, text, duration);
@@ -239,17 +259,9 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     }
 
     public void nextQuestion() {
-        boolean approved = false;
-        while (!approved) {
-            int number = (int) (Math.random() * 24) + 1;
-            if (!selectedQuestions.contains(number)) {
-                selectedQuestions.add(number);
-                questionNumber = number;
-                txt_game_question.setText(String.valueOf(questions[questionNumber]));
-                whichQuestion++;
-                approved = true;
-            }
-        }
+        int number = randomAmount.indexOf(whichQuestion);
+        txt_game_question.setText(questions[number]);
+        whichQuestion++;
     }
 
     public void restartGame(){
@@ -278,9 +290,16 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         outState.putInt(STATE_QUESTIONNUMBER, questionNumber);
         outState.putInt(STATE_RIGHTAWSER,rightAwser);
         outState.putInt(STATE_WRONGAWSER, wrongAwser);
+        myDialog = new Dialog(this);
         super.onSaveInstanceState(outState);
-
     }
+
+    @Override
+    protected void onPostResume() {
+        myDialog = new Dialog(this);
+        super.onPostResume();
+    }
+
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -298,6 +317,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         if (numberOfQuestions == whichQuestion) {
             showPopup();
         }
+
     }
     public void showPopup(){
 

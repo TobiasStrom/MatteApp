@@ -51,6 +51,8 @@
         <item>9+7</item>
         <!--Question 25-->
         <item>6+3</item>
+        <!--Question test-->
+        <item>6+4</item>
     </string-array>
     <string-array name="answers">
         <!--Question 1-->
@@ -103,6 +105,8 @@
         <item>16</item>
         <!--Question 25-->
         <item>9</item>
+        <!--Question test-->
+        <item>10</item>
     </string-array>
     <string-array name="questionAmount">
         <item>@string/question5</item>
