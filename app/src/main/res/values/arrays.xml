@@ -51,6 +51,8 @@
         <item>9+7</item>
         <!--Question 25-->
         <item>6+3</item>
+        <!--Question test-->
+        <item>6+4</item>
     </string-array>
     <string-array name="answers">
         <!--Question 1-->
@@ -103,5 +105,25 @@
         <item>16</item>
         <!--Question 25-->
         <item>9</item>
+        <!--Question test-->
+        <item>10</item>
+    </string-array>
+    <string-array name="questionAmount">
+        <item>@string/question5</item>
+        <item>@string/question10</item>
+        <item>@string/question25</item>
+    </string-array>
+    <string-array name="questionAmountListValues">
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+    </string-array>
+    <string-array name="chooseLanguage">
+        <item>@string/norwegian</item>
+        <item>@string/german</item>
+    </string-array>
+    <string-array name="chooseLanguageListValues">
+        <item>no</item>
+        <item>de</item>
     </string-array>
 </resources>

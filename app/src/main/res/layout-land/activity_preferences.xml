@@ -85,6 +85,7 @@
             </RadioGroup>
 
             <RadioGroup
+                android:id="@+id/radioGroupLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -112,6 +113,7 @@
 
 
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,17 +124,26 @@
 
         <Button
             android:id="@+id/btnConfirm"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="200dp"
             android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:background="@xml/rounded_button_inchworm"
+            android:onClick="submitChanges"
             android:text="@string/confirm"
+            android:textColor="@android:color/black"
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/btnClose"
+            android:id="@+id/btn_Close"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="200dp"
             android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:background="@xml/rounded_button_magenta"
             android:onClick="btnExitPreferences"
             android:text="@string/exit"
+            android:textColor="@android:color/white"
             android:textSize="18sp" />
 
     </LinearLayout>

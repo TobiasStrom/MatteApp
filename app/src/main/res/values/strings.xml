@@ -30,11 +30,14 @@
     <string name="exit">Lukk</string>
     <string name="remove">Fjern</string>
     <!--Disse strenger burde defineres av programmet, er definert kun for testing -->
-    <string name="txt_question_test">23 + 42 =</string>
+    <string name="txt_question_test">23 + 42</string>
     <string name="txt_stats_test">Riktige: 20 Gale: 10</string>
-    <string name="txt_stats_correct_test">Riktige: 20</string>
-    <string name="txt_stats_wrong_test">Gale: 10</string>
+    <string name="txt_stats_correct_test">20</string>
+    <string name="txt_stats_wrong_test">10</string>
     <string name="sure_exit">Sikker på at du vil avlsutte spillet</string>
+    <string name="accessiblity_input_number">Skriv inn tall</string>
+    <string name="language_setting_group">Språk</string>
+    <string name="question_amount_setting_group">Antall spørsmål</string>
 
     <!-- Dette er bare til test -->
 

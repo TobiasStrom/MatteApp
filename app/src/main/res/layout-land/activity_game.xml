@@ -3,20 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:background="#FFFFFF">
-
-    <TextView
-        android:id="@+id/txt_game_statistics2"
-        android:layout_width="78dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="@string/right"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/txt_right_awser"
@@ -26,19 +13,10 @@
         android:layout_marginLeft="8dp"
         android:text="15"
         android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txt_game_statistics2"
-        app:layout_constraintStart_toEndOf="@+id/txt_game_statistics2" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="@string/wrong"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txt_right_awser"
-        app:layout_constraintStart_toEndOf="@+id/txt_right_awser" />
 
     <TextView
         android:id="@+id/txt_wrong_awser"
@@ -48,172 +26,296 @@
         android:layout_marginLeft="8dp"
         android:text="0"
         android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/textView3" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/txt_game_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center|center_vertical"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/table_keypad"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_question_test"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_wrong_awser">
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-        <TextView
-            android:id="@+id/txt_game_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_question_test"
-            android:textSize="30sp" />
-
-        <EditText
-            android:id="@+id/inp_newNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:gravity="center_horizontal"
-            android:inputType="numberSigned"
-            android:textAlignment="center"
-            android:textSize="30sp" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
+    <EditText
+        android:id="@+id/inp_newNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:onClick="btnExitGame"
-        android:text="@string/exit"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center_horizontal"
+        android:hint="@string/accessiblity_input_number"
+        android:importantForAutofill="no"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <TableLayout
-        android:id="@+id/table_keypad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@xml/rounded_button_magenta"
+        android:onClick="btnExitGame"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:contentDescription="@string/exit"
+        android:src="@drawable/cross_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_game_0"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_0"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btn_game_8"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_8"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_game_0"
+        app:layout_constraintStart_toStartOf="@+id/btn_game_0" />
 
-            <Button
-                android:id="@+id/btn_game_1"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_1"
-                android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_game_2"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_2"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_game_5"
+        app:layout_constraintStart_toStartOf="@+id/btn_game_5" />
 
-            <Button
-                android:id="@+id/btn_game_2"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_2"
-                android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_game_6"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_6"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_game_5"
+        app:layout_constraintStart_toEndOf="@+id/btn_game_5" />
 
-            <Button
-                android:id="@+id/btn_game_3"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_3"
-                android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_game_4"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_4"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_game_5"
+        app:layout_constraintEnd_toStartOf="@+id/btn_game_5" />
 
-            <Button
-                android:id="@+id/btn_game_4"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_4"
-                android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_game_9"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_9"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_game_8"
+        app:layout_constraintStart_toEndOf="@+id/btn_game_8" />
 
-            <Button
-                android:id="@+id/btn_game_5"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_5"
-                android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_game_7"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_7"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_game_8"
+        app:layout_constraintEnd_toStartOf="@+id/btn_game_8" />
 
-        </TableRow>
+    <ImageButton
+        android:id="@+id/btn_game_submit"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_inchworm"
+        android:contentDescription="@string/btn_game_submit"
+        android:onClick="btnCheck"
+        android:padding="7dp"
+        android:scaleType="fitCenter"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:src="@drawable/check_white"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_game_0"
+        app:layout_constraintEnd_toEndOf="@+id/btn_game_9"
+        app:layout_constraintStart_toEndOf="@+id/btn_game_0" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btn_game_1"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_1"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_game_2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_game_2" />
 
-            <Button
-                android:id="@+id/btn_game_6"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_6"
-                android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_game_3"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_3"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_game_2"
+        app:layout_constraintStart_toEndOf="@+id/btn_game_2" />
 
-            <Button
-                android:id="@+id/btn_game_7"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_7"
-                android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_game_5"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_blue"
+        android:text="@string/btn_game_5"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_game_8"
+        app:layout_constraintStart_toStartOf="@+id/btn_game_8" />
 
-            <Button
-                android:id="@+id/btn_game_8"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_8"
-                android:textSize="18sp" />
+    <ImageButton
+        android:id="@+id/removeGame"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:background="@xml/rounded_button_magenta"
+        android:contentDescription="@string/remove"
+        android:onClick="bntRemoveText"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:src="@drawable/delete_white"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_game_0"
+        app:layout_constraintEnd_toStartOf="@+id/btn_game_0"
+        app:layout_constraintStart_toStartOf="@+id/btn_game_7" />
 
-            <Button
-                android:id="@+id/btn_game_9"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_9"
-                android:textSize="18sp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-            <Button
-                android:id="@+id/btn_game_0"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_0"
-                android:textSize="18sp" />
-        </TableRow>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="="
+        android:textSize="36sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_game_question" />
 
-        <TableRow
-            android:layout_width="497dp"
-            android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/check" />
 
-            <Button
-                android:id="@+id/removeGame"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:onClick="bntRemoveText"
-                android:text="@string/remove"
-                android:textSize="18sp" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/txt_right_awser"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cross" />
 
-            <Button
-                android:id="@+id/btn_game_submit"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="@string/btn_game_submit"
-                android:onClick="btnCheck"
-                android:textSize="18sp" />
-        </TableRow>
-
-    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
