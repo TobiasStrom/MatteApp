@@ -51,14 +51,17 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
         app:layout_constraintStart_toEndOf="@+id/textView7" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@xml/rounded_button_magenta"
         android:onClick="btnExitGame"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
         android:text="@string/exit"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -267,24 +270,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_remove"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_weight="1"
         android:background="@xml/rounded_button_magenta"
         android:onClick="bntRemoveText"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_input_delete"
         android:text="@string/remove"
         android:textColor="@android:color/white"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_game_0"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_game_0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_game_0" />
 
     <Button
         android:id="@+id/btn_game_0"
@@ -307,25 +312,27 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_game_submit"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginStart="4dp"
 
-        android:layout_marginLeft="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_weight="1"
         android:background="@xml/rounded_button_inchworm"
         android:onClick="btnCheck"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_menu_add"
         android:text="@string/btn_game_submit"
         android:textColor="@android:color/black"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_game_0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline5" />
+        app:layout_constraintStart_toEndOf="@+id/btn_game_0"
+        app:layout_constraintTop_toTopOf="@+id/btn_game_0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

@@ -23,7 +23,7 @@
     <string name="question25">25 Spørsmål</string>
     <string name="chooseLanguage">Velg språk</string>
     <string name="norwegian">Norsk</string>
-    <string name="german">Tysk</string>
+    <string name="german">Deutsh</string>
     <string name="confirm">Bekreft</string>
     <string name="right">Riktige:</string>
     <string name="wrong">Feil:</string>
@@ -35,9 +35,11 @@
     <string name="txt_stats_correct_test">Riktige: 20</string>
     <string name="txt_stats_wrong_test">Gale: 10</string>
     <string name="sure_exit">Sikker på at du vil avlsutte spillet</string>
+    <string name="prosent"> Ingen statistikk</string>
+    <string name="listViewHappy">Du klarte </string>
+    <string name="of">av</string>
 
-    <!-- Dette er bare til test -->
-
+    <!-- Dette er bare til test -->r
     <string name="ok">Avslutt spill</string>
     <string name="ikkeok">Avbryt</string>
 

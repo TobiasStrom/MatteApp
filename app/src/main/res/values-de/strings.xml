@@ -21,7 +21,7 @@
     <string name="question5">5 Fragen</string>
     <string name="question10">10 Fragen</string>
     <string name="question25">25 Fragen</string>
-    <string name="chooseLanguage">Wähle deine Sprache</string>
+    <string name="chooseLanguage">Wähle deine Sprache!</string>
     <string name="norwegian">Norsk</string>
     <string name="german">Deutsch</string>
     <string name="confirm">Bestätigt</string>
@@ -35,6 +35,9 @@
     <string name="txt_stats_correct_test">Richtig: 20</string>
     <string name="txt_stats_wrong_test">Falsch: 10</string>
     <string name="sure_exit">Sicher möchten Sie das Spiel züchten</string>
+    <string name="prosent">Keine Statistiken</string>
+    <string name="listViewHappy">Du machst </string>
+    <string name="of">von</string>
 
     <!-- Dette er bare til test -->
 

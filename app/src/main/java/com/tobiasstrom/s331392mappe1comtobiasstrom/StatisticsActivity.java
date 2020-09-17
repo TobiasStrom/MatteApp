@@ -43,7 +43,13 @@ public class StatisticsActivity extends AppCompatActivity {
         StratisticsAdapter arrayAdapter = new StratisticsAdapter(this, R.layout.listview_row, StatisticsBrain.statistics);
         listView.setAdapter(arrayAdapter);
         textView = (TextView) findViewById(R.id.txt_posent);
-        textView.setText(Statistics.prosent()+"");
+        if (StatisticsBrain.statistics.isEmpty()){
+            textView.setText(R.string.prosent);
+        }else {
+            textView.setText(getText(R.string.right) + " "+ Statistics.prosent()+"%");
+        }
+
+
     }
     public void btnExitStatistics(View view) {
         this.finish();
@@ -53,6 +59,7 @@ public class StatisticsActivity extends AppCompatActivity {
         StatisticsBrain.statistics.clear();
         listView = (ListView) findViewById(R.id.xmlListViw);
         listView.setAdapter(null);
+        textView.setText(R.string.prosent);
 
     }
 }

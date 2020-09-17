@@ -1,6 +1,7 @@
 package com.tobiasstrom.s331392mappe1comtobiasstrom;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Locale;
@@ -25,22 +27,35 @@ import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity implements MyDialog.DialogClickListener {
     private static final String TAG = "GameActivity";
+    Button btn_game_0 ;
+    Button btn_game_1 ;
+    Button btn_game_2;
+    Button btn_game_3;
+    Button btn_game_4;
+    Button btn_game_5;
+    Button btn_game_6;
+    Button btn_game_7;
+    Button btn_game_8;
+    Button btn_game_9;
+    ImageButton btn_remove;
+    ImageButton btn_game_submit;
+
 
     private EditText newNumber;
     private String[] questions;
     private String[] answers;
     private ArrayList<Integer> selectedQuestions = new ArrayList();
-    private int numberOfQuestions = 1;
+    private static int numberOfQuestions = 5;
     private int whichQuestion = 0;
     TextView txt_game_question;
     TextView txt_right_awser;
     TextView txt_wrong_awser;
-    private int questionNumber = 0;
+    private  int questionNumber = 0;
     private int rightAwser = 0;
-    private int wrongAwser = 0;
+    private int wrongAwser = numberOfQuestions;
     Dialog myDialog;
-    Button btnClose;
-    Button btn_restart;
+    ImageButton btnClose;
+    ImageButton btn_restart;
     TextView txt_result_of, txt_result;
 
 
@@ -65,6 +80,14 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         getSharedPreferences("LANGUAGE",MODE_PRIVATE).edit().putString("landskode",landskode).apply();
     }
 
+    public static int getNumberOfQuestions() {
+        return numberOfQuestions;
+    }
+
+    public static void setNumberOfQuestions(int numberOfQuestion) {
+        numberOfQuestions = numberOfQuestion;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         settland(getSharedPreferences("LANGUAGE",MODE_PRIVATE).getString("landskode",""));
@@ -76,18 +99,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_game_question = (TextView)findViewById(R.id.txt_game_question);
         txt_right_awser = (TextView)findViewById(R.id.txt_right_awser);
         txt_wrong_awser = (TextView)findViewById(R.id.txt_wrong_awser);
-        Button btn_game_0 = (Button) findViewById(R.id.btn_game_0);
-        Button btn_game_1 = (Button) findViewById(R.id.btn_game_1);
-        Button btn_game_2 = (Button) findViewById(R.id.btn_game_2);
-        Button btn_game_3 = (Button) findViewById(R.id.btn_game_3);
-        Button btn_game_4 = (Button) findViewById(R.id.btn_game_4);
-        Button btn_game_5 = (Button) findViewById(R.id.btn_game_5);
-        Button btn_game_6 = (Button) findViewById(R.id.btn_game_6);
-        Button btn_game_7 = (Button) findViewById(R.id.btn_game_7);
-        Button btn_game_8 = (Button) findViewById(R.id.btn_game_8);
-        Button btn_game_9 = (Button) findViewById(R.id.btn_game_9);
-        Button btn_remove = (Button) findViewById(R.id.btn_remove);
-        Button btn_game_submit = (Button) findViewById(R.id.btn_game_submit);
+        findViewBtn();
 
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -97,17 +109,6 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
                 newNumber.append(b.getText().toString());
             }
         };
-
-        btn_game_0.setOnClickListener(listener);
-        btn_game_1.setOnClickListener(listener);
-        btn_game_2.setOnClickListener(listener);
-        btn_game_3.setOnClickListener(listener);
-        btn_game_4.setOnClickListener(listener);
-        btn_game_5.setOnClickListener(listener);
-        btn_game_6.setOnClickListener(listener);
-        btn_game_7.setOnClickListener(listener);
-        btn_game_8.setOnClickListener(listener);
-        btn_game_9.setOnClickListener(listener);
 
         //Henter spørsmålene fra array.xml og legger det inn i et array
         restartGame();
@@ -163,10 +164,19 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
                 wrongAwser++;
                 txt_wrong_awser.setText(wrongAwser+"");
             }
-            //txt_game_question.setText("Du er ferdig");
-            //Context context = getApplicationContext();
-            //CharSequence text = "Du klarte " + wrongAwser + " feil";
-            //int duration = Toast.LENGTH_SHORT;
+            findViewBtn();
+            btn_game_0.setEnabled(false);
+            btn_game_2.setEnabled(false);
+            btn_game_3.setEnabled(false);
+            btn_game_4.setEnabled(false);
+            btn_game_5.setEnabled(false);
+            btn_game_6.setEnabled(false);
+            btn_game_7.setEnabled(false);
+            btn_game_8.setEnabled(false);
+            btn_game_9.setEnabled(false);
+            btn_remove.setEnabled(false);
+            btn_game_submit.setEnabled(false);
+
 
             showPopup(view);
             Statistics anser = new Statistics(rightAwser,numberOfQuestions);
@@ -221,15 +231,12 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     public void showPopup(View v){
 
         txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
-        txt_result_of = (TextView) myDialog.findViewById(R.id.txt_result_of);
-
-
-
+        txt_result_of = (TextView) findViewById(R.id.txt_result_of);
 
 
         myDialog.setContentView(R.layout.custon_pop_up);
-        btn_restart = (Button) myDialog.findViewById(R.id.btn_restart);
-        btnClose = (Button) myDialog.findViewById(R.id.btn_Close);
+        btn_restart = (ImageButton) myDialog.findViewById(R.id.btn_restart);
+        btnClose = (ImageButton) myDialog.findViewById(R.id.btn_Close);
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,8 +272,33 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_wrong_awser.setText(wrongAwser+"");
 
         nextQuestion();
+        btn_game_0.setEnabled(true);
+        btn_game_2.setEnabled(true);
+        btn_game_3.setEnabled(true);
+        btn_game_4.setEnabled(true);
+        btn_game_5.setEnabled(true);
+        btn_game_6.setEnabled(true);
+        btn_game_7.setEnabled(true);
+        btn_game_8.setEnabled(true);
+        btn_game_9.setEnabled(true);
+        btn_remove.setEnabled(true);
+        btn_game_submit.setEnabled(true);
 
 
+    }
+    public void findViewBtn(){
+        btn_game_0 = (Button) findViewById(R.id.btn_game_0);
+        btn_game_1 = (Button) findViewById(R.id.btn_game_1);
+        btn_game_2 = (Button) findViewById(R.id.btn_game_2);
+        btn_game_3 = (Button) findViewById(R.id.btn_game_3);
+        btn_game_4 = (Button) findViewById(R.id.btn_game_4);
+        btn_game_5 = (Button) findViewById(R.id.btn_game_5);
+        btn_game_6 = (Button) findViewById(R.id.btn_game_6);
+        btn_game_7 = (Button) findViewById(R.id.btn_game_7);
+        btn_game_8 = (Button) findViewById(R.id.btn_game_8);
+        btn_game_9 = (Button) findViewById(R.id.btn_game_9);
+        btn_remove = (ImageButton) findViewById(R.id.btn_remove);
+        btn_game_submit = (ImageButton) findViewById(R.id.btn_game_submit);
     }
 
 
