@@ -109,6 +109,16 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
                 newNumber.append(b.getText().toString());
             }
         };
+        btn_game_0.setOnClickListener(listener);
+        btn_game_1.setOnClickListener(listener);
+        btn_game_2.setOnClickListener(listener);
+        btn_game_3.setOnClickListener(listener);
+        btn_game_4.setOnClickListener(listener);
+        btn_game_5.setOnClickListener(listener);
+        btn_game_6.setOnClickListener(listener);
+        btn_game_7.setOnClickListener(listener);
+        btn_game_8.setOnClickListener(listener);
+        btn_game_9.setOnClickListener(listener);
 
         //Henter spørsmålene fra array.xml og legger det inn i et array
         restartGame();
