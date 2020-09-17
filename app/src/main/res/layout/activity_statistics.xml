@@ -75,6 +75,7 @@
         android:text="@string/btn_stats_reset"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        android:onClick="resetStats"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"

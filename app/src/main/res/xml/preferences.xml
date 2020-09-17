@@ -4,7 +4,7 @@
     android:title="@string/preferences">
     <PreferenceCategory android:title="@string/question_amount_setting_group">
         <ListPreference
-            android:defaultValue="false"
+            android:defaultValue="5"
             android:entries="@array/questionAmount"
             android:entryValues="@array/questionAmountListValues"
             android:key="questionPref"
@@ -13,7 +13,7 @@
 
     <PreferenceCategory android:title="@string/language_setting_group">
         <ListPreference
-            android:defaultValue="false"
+            android:defaultValue=""
             android:entries="@array/chooseLanguage"
             android:entryValues="@array/chooseLanguageListValues"
             android:key="languagePref"

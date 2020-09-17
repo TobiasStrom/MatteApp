@@ -70,7 +70,9 @@
             android:background="@xml/rounded_button_magenta"
             android:text="@string/btn_stats_reset"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="resetStats"
+            />
 
         <Button
             android:id="@+id/btnCloseStat"
