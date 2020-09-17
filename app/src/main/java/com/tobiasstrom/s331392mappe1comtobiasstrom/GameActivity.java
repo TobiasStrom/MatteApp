@@ -3,6 +3,7 @@ package com.tobiasstrom.s331392mappe1comtobiasstrom;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -104,23 +106,23 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        newNumber = (EditText) findViewById(R.id.inp_newNumber);
+        newNumber = findViewById(R.id.inp_newNumber);
 
-        txt_game_question = (TextView)findViewById(R.id.txt_game_question);
-        txt_right_awser = (TextView)findViewById(R.id.txt_right_awser);
-        txt_wrong_awser = (TextView)findViewById(R.id.txt_wrong_awser);
-        Button btn_game_0 = (Button) findViewById(R.id.btn_game_0);
-        Button btn_game_1 = (Button) findViewById(R.id.btn_game_1);
-        Button btn_game_2 = (Button) findViewById(R.id.btn_game_2);
-        Button btn_game_3 = (Button) findViewById(R.id.btn_game_3);
-        Button btn_game_4 = (Button) findViewById(R.id.btn_game_4);
-        Button btn_game_5 = (Button) findViewById(R.id.btn_game_5);
-        Button btn_game_6 = (Button) findViewById(R.id.btn_game_6);
-        Button btn_game_7 = (Button) findViewById(R.id.btn_game_7);
-        Button btn_game_8 = (Button) findViewById(R.id.btn_game_8);
-        Button btn_game_9 = (Button) findViewById(R.id.btn_game_9);
-        Button btn_remove = (Button) findViewById(R.id.btn_remove);
-        Button btn_game_submit = (Button) findViewById(R.id.btn_game_submit);
+        txt_game_question = findViewById(R.id.txt_game_question);
+        txt_right_awser = findViewById(R.id.txt_right_awser);
+        txt_wrong_awser = findViewById(R.id.txt_wrong_awser);
+        Button btn_game_0 = findViewById(R.id.btn_game_0);
+        Button btn_game_1 = findViewById(R.id.btn_game_1);
+        Button btn_game_2 = findViewById(R.id.btn_game_2);
+        Button btn_game_3 = findViewById(R.id.btn_game_3);
+        Button btn_game_4 = findViewById(R.id.btn_game_4);
+        Button btn_game_5 = findViewById(R.id.btn_game_5);
+        Button btn_game_6 = findViewById(R.id.btn_game_6);
+        Button btn_game_7 = findViewById(R.id.btn_game_7);
+        Button btn_game_8 = findViewById(R.id.btn_game_8);
+        Button btn_game_9 = findViewById(R.id.btn_game_9);
+        Button btn_remove = findViewById(R.id.btn_remove);
+        Button btn_game_submit = findViewById(R.id.btn_game_submit);
 
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -214,7 +216,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             //CharSequence text = "Du klarte " + wrongAwser + " feil";
             //int duration = Toast.LENGTH_SHORT;
 
-            showPopup(view);
+            showPopup();
 
             //oppdatere session statistikk
             totalRightAnswer += rightAwser;
@@ -250,6 +252,24 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         }
     }
 
+    public void restartGame(){
+        whichQuestion = 0;
+        questionNumber = 0;
+        rightAwser = 0;
+        wrongAwser = 0;
+        //randomAmount.clear();
+        //randomArray();
+        statistics.clear();
+        newNumber.setText("");
+        questions = getResources().getStringArray(R.array.questions);
+        answers = getResources().getStringArray(R.array.answers);
+        txt_game_question.setText(questions[questionNumber]+ " =");
+        txt_right_awser.setText(rightAwser+"");
+        txt_wrong_awser.setText(wrongAwser+"");
+        nextQuestion();
+
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putInt(STATE_NUMBEROFQUESTION, numberOfQuestions);
@@ -275,22 +295,15 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_right_awser.setText(String.valueOf(rightAwser));
         txt_wrong_awser.setText(String.valueOf(wrongAwser));
 
-        //for opp modalen dersom mobilen har blitt rotert
-        //dette skjer kun dersom spillet er ferdig
-        if (whichQuestion == numberOfQuestions) {
-            showPopup(view);
+        if (numberOfQuestions == whichQuestion) {
+            showPopup();
         }
-
     }
-    public void showPopup(View v){
+    public void showPopup(){
 
-        txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
+        /*txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
         txt_result_of = (TextView) myDialog.findViewById(R.id.txt_result_of);
-
-
-
         myDialog.setContentView(R.layout.custon_pop_up);
-
         //txt_result.setTextSize(50);
         btnClose = (Button) myDialog.findViewById(R.id.btn_Close);
         btnClose.setOnClickListener(new View.OnClickListener() {
@@ -301,8 +314,26 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             }
         });
         myDialog.show();
-        //txt_result.setText("Hei");
+        //txt_result.setText("Hei");*/
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Spillen din ble ferdig");
+        builder.setMessage(rightAwser + " av: " + numberOfQuestions);
+        builder.setPositiveButton("Igjen", new Dialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                restartGame();
+            }
+        });
+        builder.setNegativeButton(R.string.ikkeok, new Dialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                finish();
+            }
+        });
+        builder.setCancelable(false);
+        builder.show();
+
+
     }
+
 
 
 }

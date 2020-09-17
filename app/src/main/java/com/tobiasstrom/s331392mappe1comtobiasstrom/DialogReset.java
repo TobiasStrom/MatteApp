@@ -5,14 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DialogFragment;
-
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-public class MyDialog extends DialogFragment {
+public class DialogReset extends DialogFragment {
 
     private DialogClickListener callback;
 
@@ -32,12 +30,12 @@ public class MyDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        return new AlertDialog.Builder(getActivity()).setTitle(R.string.sure_exit).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+        return new AlertDialog.Builder(getActivity()).setTitle(R.string.reset_title).setPositiveButton(R.string.reset_positive, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         callback.onYesClick();
                     }
                 }
-        ) .setNegativeButton(R.string.ikkeok, new DialogInterface.OnClickListener() {
+        ) .setNegativeButton(R.string.reset_negative, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int whichButton) {
                         callback.onNoClick();
                     }

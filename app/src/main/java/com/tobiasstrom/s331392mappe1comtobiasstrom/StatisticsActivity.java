@@ -9,12 +9,12 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-
+import android.app.DialogFragment;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-public class StatisticsActivity extends AppCompatActivity {
+public class StatisticsActivity extends AppCompatActivity implements DialogReset.DialogClickListener {
     private int right = 0;
     private int wrong = 0;
     //denne verdi er den som statistikkene skal få etter restet
@@ -46,13 +46,25 @@ public class StatisticsActivity extends AppCompatActivity {
         return value;
     }
 
-    //metoden nullstiller statistikk verdier til en gitt verdi (0)
+
     public void resetStats(View v) {
-        //her skal dialogen kalles for å forsikre seg at brukeren vil faktisk nullstille.
+        DialogFragment dialog = new DialogReset();
+        dialog.show(getFragmentManager(),"Reset");
+
+    }
+
+    @Override
+    public void onYesClick() {
+        //metoden nullstiller statistikk verdier til en gitt verdi (0)
         sharedPreferences.edit().putInt("stats_right", valueAfterReset).apply();
         sharedPreferences.edit().putInt("stats_wrong", valueAfterReset).apply();
         textViewRight.setText(String.valueOf(valueAfterReset));
         textViewWrong.setText(String.valueOf(valueAfterReset));
+    }
+
+    @Override
+    public void onNoClick() {
+        //return;
     }
 
     @Override

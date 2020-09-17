@@ -41,8 +41,13 @@
 
     <!-- Dette er bare til test -->
 
+
+    <!--Dialoger-->
     <string name="ok">Avslutt spill</string>
     <string name="ikkeok">Avbryt</string>
+    <string name="reset_title">Vil du nullstille statistikk?</string>
+    <string name="reset_positive">Ja!</string>
+    <string name="reset_negative">Nei!</string>
 
 
 </resources>
