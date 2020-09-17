@@ -123,7 +123,7 @@
         <item>@string/german</item>
     </string-array>
     <string-array name="chooseLanguageListValues">
-        <item>no</item>
+        <item></item>
         <item>de</item>
     </string-array>
 </resources>
