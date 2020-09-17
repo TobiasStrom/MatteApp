@@ -20,6 +20,6 @@ public class Statistics {
                 "yourAnwser=" + yourAnwser +
                 ", rightAnwser=" + rightAnwser +
                 ", question='" + question + '\'' +
-                '}';
+                '}'+ '\n';
     }
 }

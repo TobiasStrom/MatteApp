@@ -170,14 +170,18 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
 
         if (whichQuestion < numberOfQuestions) {
             String youAnswerd = newNumber.getText().toString();
+            if (youAnswerd.isEmpty()){
+                youAnswerd = "0";
+            }
+            Statistics anser = new Statistics(youAnswerd,answers[questionNumber],questions[questionNumber]);
+            statistics.add(anser);
+            Log.d(TAG, "chechQuestion: " + statistics.toString());
 
             if (answers[questionNumber].equals(youAnswerd)){
                 rightAwser++;
                 txt_right_awser.setText(rightAwser+"");
                 //int yourAnwser, int rightAnwser, String question
-                Statistics anser = new Statistics(youAnswerd,answers[questionNumber],questions[questionNumber]);
-                Log.d(TAG, "chechQuestion: ");
-                statistics.add(anser);
+
                 newNumber.setText("");
                 
             }
@@ -204,8 +208,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             //int duration = Toast.LENGTH_SHORT;
 
             showPopup(view);
-            Statistics anser = new Statistics(rightAwser,numberOfQuestions,"");
-            statistics.add(anser);
+
             Log.d(TAG, statistics.toString());
 
             //Toast toast = Toast.makeText(context, text, duration);
