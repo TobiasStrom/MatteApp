@@ -6,6 +6,7 @@ import android.app.DialogFragment;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 public class GameActivity extends AppCompatActivity implements MyDialog.DialogClickListener {
     private static final String TAG = "GameActivity";
 
+
+
     private EditText newNumber;
     private String[] questions;
     private String[] answers;
@@ -46,10 +49,11 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     private int totalWrongAnswer = 0;
     Dialog myDialog;
     Button btnClose;
+    Button btn_restart;
     TextView txt_result_of, txt_result;
-    ArrayList<Statistics> statistics = new ArrayList<>();
     SharedPreferences sharedPreferences;
     View view;
+    private int number;
 
 
     private static final String STATE_NUMBEROFQUESTION = "NumberOfQuestion";
@@ -79,7 +83,6 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         return value;
     }
 
-
     @Override
     public void onBackPressed() {
         DialogFragment dialog = new MyDialog();
@@ -98,6 +101,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     }
 
     public void randomArray(){
+        randomAmount.clear();
         int i = 0;
         while (i < 25){
             randomAmount.add(i);
@@ -195,43 +199,48 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     }
 
     public void chechQuestion(View view){
-
+        final MediaPlayer rigthSound = MediaPlayer.create(this, R.raw.happykids);
+        final MediaPlayer wrongSound = MediaPlayer.create(this, R.raw.boo);
+        String youAnswerd = newNumber.getText().toString();
+        if (youAnswerd.isEmpty()){
+            youAnswerd = "0";
+        }
         if (whichQuestion < numberOfQuestions) {
-            String youAnswerd = newNumber.getText().toString();
-            if (youAnswerd.isEmpty()){
-                youAnswerd = "0";
-            }
-            Statistics anser = new Statistics(youAnswerd,answers[questionNumber],questions[questionNumber]);
+
+            Statistics anser = new Statistics(youAnswerd,answers[number],questions[number]);
             statistics.add(anser);
             Log.d(TAG, "chechQuestion: " + statistics.toString());
 
-            if (answers[questionNumber].equals(youAnswerd)){
+            if (answers[number].equals(youAnswerd)){
                 rightAwser++;
                 txt_right_awser.setText(String.valueOf(rightAwser));
                 newNumber.setText("");
-                
+                rigthSound.start();
             }
             else {
                 wrongAwser++;
                 txt_wrong_awser.setText(String.valueOf(wrongAwser));
                 newNumber.setText("");
+                wrongSound.start();
             }
             youAnswerd = "";
             nextQuestion();
         }
         else{
-            if (answers[questionNumber].equals(newNumber.getText().toString())){
+            if (answers[number].equals(newNumber.getText().toString())){
                 rightAwser++;
+                rigthSound.start();
                 txt_right_awser.setText(String.valueOf(rightAwser));
             }
             else {
                 wrongAwser++;
                 txt_wrong_awser.setText(String.valueOf(wrongAwser));
+                wrongSound.start();
             }
-            //txt_game_question.setText("Du er ferdig");
-            //Context context = getApplicationContext();
-            //CharSequence text = "Du klarte " + wrongAwser + " feil";
-            //int duration = Toast.LENGTH_SHORT;
+
+            Statistics anser = new Statistics(youAnswerd,answers[number],questions[number]);
+            statistics.add(anser);
+            Log.d(TAG, "chechQuestion: " + statistics.toString());
 
             showPopup(view);
 
@@ -243,21 +252,13 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             sharedPreferences.edit().putInt("stats_right", totalRightAnswer).apply();
             sharedPreferences.edit().putInt("stats_wrong", totalWrongAnswer).apply();
 
-
-            Statistics anser = new Statistics(rightAwser,numberOfQuestions);
-            Statistics statistics1 = new Statistics(2,6);
-            statistics.add(statistics1);
-            statistics.add(anser);
-
             Log.d(TAG, statistics.toString());
 
-            //Toast toast = Toast.makeText(context, text, duration);
-            //toast.show();
         }
     }
 
     public void nextQuestion() {
-        int number = randomAmount.indexOf(whichQuestion);
+        number = randomAmount.indexOf(whichQuestion);
         txt_game_question.setText(questions[number]);
         whichQuestion++;
     }
@@ -303,16 +304,16 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
 
     }
     public void showPopup(View v){
+        myDialog = new Dialog(this);
 
         txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
         txt_result_of = (TextView) myDialog.findViewById(R.id.txt_result_of);
 
-
-
         myDialog.setContentView(R.layout.custon_pop_up);
 
-        //txt_result.setTextSize(50);
         btnClose = (Button) myDialog.findViewById(R.id.btn_Close);
+        btn_restart = (Button) myDialog.findViewById(R.id.btn_restart);
+
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -320,9 +321,40 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
                 finish();
             }
         });
+        btn_restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restartGame();
+                myDialog.dismiss();
+            }
+        });
+        //txt_result.setText("hei");
         myDialog.show();
-        //txt_result.setText("Hei");
+
     }
+    public void restartGame(){
+
+        whichQuestion = 0;
+        questionNumber = 0;
+        rightAwser = 0;
+        wrongAwser = 0;
+        randomAmount.clear();
+        randomArray();
+        statistics.clear();
+
+        newNumber.setText("");
+        questions = getResources().getStringArray(R.array.questions);
+        answers = getResources().getStringArray(R.array.answers);
+
+        txt_game_question.setText(questions[questionNumber]+ " =");
+        txt_right_awser.setText(rightAwser+"");
+        txt_wrong_awser.setText(wrongAwser+"");
+
+        nextQuestion();
+
+
+    }
+
 
 
 }

@@ -38,6 +38,8 @@
     <string name="accessiblity_input_number">Skriv inn tall</string>
     <string name="language_setting_group">Språk</string>
     <string name="question_amount_setting_group">Antall spørsmål</string>
+    <string name="greating">Du klarte</string>
+    <string name="of">av</string>
 
     <!-- Dette er bare til test -->
 
