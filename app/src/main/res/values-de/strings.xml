@@ -43,7 +43,11 @@
 
     <!-- Dette er bare til test -->
 
+    <!-- Dialoger -->
     <string name="ok">Fertig</string>
     <string name="ikkeok">Abbrechen</string>
+    <string name="reset_title">Möchten Sie die Statistiken wirklich zurücksetzen?</string>
+    <string name="reset_positive">Ja!</string>
+    <string name="reset_negative">Nein!</string>
 
 </resources>

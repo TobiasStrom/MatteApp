@@ -3,6 +3,7 @@ package com.tobiasstrom.s331392mappe1comtobiasstrom;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -15,12 +16,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.Collections;
 import java.util.Locale;
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -242,7 +241,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             statistics.add(anser);
             Log.d(TAG, "chechQuestion: " + statistics.toString());
 
-            showPopup(view);
+            showPopup();
 
             //oppdatere session statistikk
             totalRightAnswer += rightAwser;
@@ -261,6 +260,24 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         number = randomAmount.indexOf(whichQuestion);
         txt_game_question.setText(questions[number]);
         whichQuestion++;
+    }
+
+    public void restartGame(){
+        whichQuestion = 0;
+        questionNumber = 0;
+        rightAwser = 0;
+        wrongAwser = 0;
+        //randomAmount.clear();
+        //randomArray();
+        statistics.clear();
+        newNumber.setText("");
+        questions = getResources().getStringArray(R.array.questions);
+        answers = getResources().getStringArray(R.array.answers);
+        txt_game_question.setText(questions[questionNumber]+ " =");
+        txt_right_awser.setText(rightAwser+"");
+        txt_wrong_awser.setText(wrongAwser+"");
+        nextQuestion();
+
     }
 
     @Override
@@ -295,21 +312,19 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_right_awser.setText(String.valueOf(rightAwser));
         txt_wrong_awser.setText(String.valueOf(wrongAwser));
 
-        //for opp modalen dersom mobilen har blitt rotert
-        //dette skjer kun dersom spillet er ferdig
-        if (whichQuestion == numberOfQuestions) {
-            showPopup(view);
+        if (numberOfQuestions == whichQuestion) {
+            showPopup();
         }
 
-
     }
-    public void showPopup(View v){
-        myDialog = new Dialog(this);
+    public void showPopup(){
+        //myDialog = new Dialog(this); // Denne endret jeg på
 
-        txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
+
+        /*txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
         txt_result_of = (TextView) myDialog.findViewById(R.id.txt_result_of);
-
         myDialog.setContentView(R.layout.custon_pop_up);
+        //txt_result.setTextSize(50);
 
         btnClose = (Button) myDialog.findViewById(R.id.btn_Close);
         btn_restart = (Button) myDialog.findViewById(R.id.btn_restart);
@@ -330,6 +345,24 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         });
         //txt_result.setText("hei");
         myDialog.show();
+
+        //txt_result.setText("Hei");*/
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Spillen din ble ferdig");
+        builder.setMessage(rightAwser + " av: " + numberOfQuestions);
+        builder.setPositiveButton("Igjen", new Dialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                restartGame();
+            }
+        });
+        builder.setNegativeButton(R.string.ikkeok, new Dialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                finish();
+            }
+        });
+        builder.setCancelable(false);
+        builder.show();
+
 
     }
     public void restartGame(){
