@@ -15,12 +15,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.Collections;
 import java.util.Locale;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,9 +46,9 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     Dialog myDialog;
     Button btnClose;
     TextView txt_result_of, txt_result;
-    ArrayList<Statistics> statistics = new ArrayList<>();
     SharedPreferences sharedPreferences;
     View view;
+    private int number;
 
 
     private static final String STATE_NUMBEROFQUESTION = "NumberOfQuestion";
@@ -244,12 +241,6 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             //lagre session statistikk til sharedPreferences
             sharedPreferences.edit().putInt("stats_right", totalRightAnswer).apply();
             sharedPreferences.edit().putInt("stats_wrong", totalWrongAnswer).apply();
-
-
-            Statistics anser = new Statistics(rightAwser,numberOfQuestions);
-            Statistics statistics1 = new Statistics(2,6);
-            statistics.add(statistics1);
-            statistics.add(anser);
 
             Log.d(TAG, statistics.toString());
 
