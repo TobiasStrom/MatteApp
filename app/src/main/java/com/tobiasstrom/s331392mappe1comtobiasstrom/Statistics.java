@@ -3,22 +3,23 @@ package com.tobiasstrom.s331392mappe1comtobiasstrom;
 import java.util.ArrayList;
 
 public class Statistics {
-    private int rightAnwser;
-    private int numberQuestions;
+    private String yourAnwser;
+    private String rightAnwser;
+    private String question;
 
-    ArrayList<Statistics> statistics = new ArrayList<>();
 
-    public Statistics(int rightAnwser, int numberQuestions) {
+    public Statistics(String yourAnwser, String rightAnwser, String question) {
+        this.yourAnwser = yourAnwser;
         this.rightAnwser = rightAnwser;
-        this.numberQuestions = numberQuestions;
+        this.question = question;
     }
 
     @Override
     public String toString() {
         return "Statistics{" +
-                "rightAnwser=" + rightAnwser +
-                ", numberQuestions=" + numberQuestions +
-                '}';
+                "yourAnwser=" + yourAnwser +
+                ", rightAnwser=" + rightAnwser +
+                ", question='" + question + '\'' +
+                '}'+ '\n';
     }
-
 }

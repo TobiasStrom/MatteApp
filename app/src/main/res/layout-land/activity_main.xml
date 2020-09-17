@@ -24,12 +24,12 @@
 
     <TableLayout
         android:id="@+id/table_menu"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -40,16 +40,19 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_start"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_weight="1"
                 android:background="@xml/rounded_button_inchworm"
+                android:contentDescription="@string/start_game"
                 android:onClick="btnStartGame"
-                android:text="@string/start_game"
-                android:textColor="#FFFFFF"
-                android:textSize="36sp" />
+                android:scaleType="fitCenter"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:src="@android:drawable/ic_media_play"
+                android:textSize="50sp" />
         </TableRow>
 
         <TableRow
@@ -57,15 +60,17 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_statistics"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:background="@xml/rounded_button_blue"
-                android:onClick="btnStatistics"
-                android:text="@string/statistics"
                 android:textColor="@android:color/white"
+                android:background="@xml/rounded_button_blue"
+                android:contentDescription="@string/statistics"
+                android:onClick="btnStatistics"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/ic_menu_sort_by_size"
                 android:textSize="36sp" />
         </TableRow>
 
@@ -73,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_preferences"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
@@ -82,7 +87,12 @@
                 android:onClick="btnPreferences"
                 android:text="@string/preferences"
                 android:textColor="@android:color/white"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                android:contentDescription="@string/preferences"
+                android:scaleType="fitCenter"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:src="@android:drawable/ic_menu_manage"/>
         </TableRow>
 
     </TableLayout>
