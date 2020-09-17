@@ -38,6 +38,8 @@
     <string name="accessiblity_input_number">Schreibe nummer</string>
     <string name="language_setting_group">Sprache</string>
     <string name="question_amount_setting_group">Fragenbetrag</string>
+    <string name="greating">Du machst</string>
+    <string name="of">von</string>
 
     <!-- Dette er bare til test -->
 

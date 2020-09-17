@@ -16,10 +16,11 @@ public class Statistics {
 
     @Override
     public String toString() {
-        return "Statistics{" +
+        F
+        return '\n'+ "Statistics{" +
                 "yourAnwser=" + yourAnwser +
                 ", rightAnwser=" + rightAnwser +
                 ", question='" + question + '\'' +
-                '}'+ '\n';
+                '}';
     }
 }
