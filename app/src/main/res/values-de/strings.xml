@@ -30,12 +30,12 @@
     <string name="exit">Schließen </string>
     <string name="remove">Entferne </string>
     <!--Disse strenger burde defineres av programmet, er definert kun for testing -->
-    <string name="txt_question_test">23 + 42 =</string>
+    <string name="txt_question_test">23 + 42</string>
     <string name="txt_stats_test">Richtig: 20 Falsch: 10</string>
-    <string name="txt_stats_correct_test">Richtig: 20</string>
-    <string name="txt_stats_wrong_test">Falsch: 10</string>
+    <string name="txt_stats_correct_test">20</string>
+    <string name="txt_stats_wrong_test">10</string>
     <string name="sure_exit">Sicher möchten Sie das Spiel züchten</string>
-    <string name="accessiblity_input_number">Schreiben Sie eine nummer</string>
+    <string name="accessiblity_input_number">Schreibe nummer</string>
     <string name="language_setting_group">Sprache</string>
     <string name="question_amount_setting_group">Fragenbetrag</string>
 
