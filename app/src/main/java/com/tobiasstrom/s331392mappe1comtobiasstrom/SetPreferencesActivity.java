@@ -12,9 +12,12 @@ import android.util.DisplayMetrics;
 import java.util.Locale;
 
 public class SetPreferencesActivity extends PreferenceActivity {
+
+    //Oppretter variablene vi trenger
     SharedPreferences sharedPreferences;
     String currentLang;
 
+    //Setter språk
     public void setLang(String prefix) {
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();

@@ -17,9 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 
 public class PreferencesActivity extends AppCompatActivity {
+    //Stetter de variablene vi trenger
     private RadioGroup radioGroup;
     private RadioGroup radioGroupLanguage;
 
+    //Setter språk
     public void settland(String landskode) {
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -28,13 +30,14 @@ public class PreferencesActivity extends AppCompatActivity {
         res.updateConfiguration(cf,dm);
         getSharedPreferences("LANGUAGE",MODE_PRIVATE).edit().putString("landskode",landskode).apply();
     }
-
+    //Skjekker om det er noe ending i språk
     public void submitChanges(View v) {
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupLanguage);
         RadioButton radioButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
         if(radioButton.getId() == R.id.radioGerman) {
             settland("de");
         } else {
+            //Tenger ikke sette in noen verdi da "no" er standar
             settland("");
         }
 
@@ -42,6 +45,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
     }
 
+    //Flytter om på fargen på kanppene
     private void adjustLanguageRadioButtonToggles(String countryCode) {
 
         RadioButton norwegianButton = (RadioButton) findViewById(R.id.radioNorwegian);
@@ -65,6 +69,7 @@ public class PreferencesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_preferences);
         adjustLanguageRadioButtonToggles(countrycode);
     }
+    //Går ut
     public void btnExitPreferences(View view) {
         setResult(RESULT_OK);
         this.finish();

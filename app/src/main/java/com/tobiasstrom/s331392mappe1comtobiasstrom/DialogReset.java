@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+//Klasse for å nullstille hvis man ønsker å fjerne stattestikk
 public class DialogReset extends DialogFragment {
 
     private DialogClickListener callback;
@@ -29,7 +30,7 @@ public class DialogReset extends DialogFragment {
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
+        //Setter hvilken melding og posetiv og neggativ knapp
         return new AlertDialog.Builder(getActivity()).setTitle(R.string.reset_title).setPositiveButton(R.string.reset_positive, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         callback.onYesClick();

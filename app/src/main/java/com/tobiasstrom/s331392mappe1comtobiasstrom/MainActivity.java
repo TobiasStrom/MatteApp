@@ -13,8 +13,10 @@ import android.view.View;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+    //Oppretter sharedPreferences
     SharedPreferences sharedPreferences;
 
+    //Metoden som skjekker land.
     public void setLang(String prefix) {
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    //Bytter til start spill skjermen
     public void btnStartGame(View view){
         startActivity(new Intent(this, GameActivity.class));
     }
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
     }
-
+    //Åpener stattestikk .
     public void btnStatistics(View view) {
         startActivity(new Intent(this, StatisticsActivity.class));
     }

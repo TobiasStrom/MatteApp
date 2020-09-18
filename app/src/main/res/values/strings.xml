@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Matte app</string>
+    <string name="app_name">Matte spill!</string>
     <string name="start_game">Start</string>
     <string name="statistics">Statistikk</string>
     <string name="preferences">Preferanser</string>
@@ -26,22 +26,16 @@
     <string name="german">Tysk</string>
     <string name="confirm">Bekreft</string>
     <string name="right">Riktig:</string>
-    <string name="wrong">Feil:</string>
     <string name="exit">Lukk</string>
     <string name="remove">Fjern</string>
-    <!--Disse strenger burde defineres av programmet, er definert kun for testing -->
-    <string name="txt_question_test">23 + 42</string>
-    <string name="txt_stats_test">Riktige: 20 Gale: 10</string>
-    <string name="txt_stats_correct_test">20</string>
-    <string name="txt_stats_wrong_test">10</string>
     <string name="sure_exit">Sikker på at du vil avlsutte spillet</string>
     <string name="accessiblity_input_number">Skriv inn tall</string>
     <string name="language_setting_group">Språk</string>
     <string name="question_amount_setting_group">Antall spørsmål</string>
     <string name="greating">Du klarte</string>
     <string name="of">av</string>
+    <string name="question">Spørsmål:</string>
 
-    <!-- Dette er bare til test -->
 
 
     <!--Dialoger-->
@@ -50,6 +44,7 @@
     <string name="reset_title">Vil du nullstille statistikk?</string>
     <string name="reset_positive">Ja!</string>
     <string name="reset_negative">Nei!</string>
+
 
 
 </resources>

@@ -28,44 +28,45 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity implements MyDialog.DialogClickListener {
+    //Tag for debug
     private static final String TAG = "GameActivity";
 
-
-
-    private EditText newNumber;
-    private String[] questions;
-    private String[] answers;
-    private ArrayList<Integer> selectedQuestions = new ArrayList();
-    private ArrayList<Integer> randomAmount = new ArrayList<>();
-    private ArrayList<Statistics> statistics = new ArrayList<>();
+    //Oppretter vaiablene vi trenger.
+    private String[] questions; //liste med spørsmålene fra arrays.xml
+    private String[] answers;  //Liste med svarene fra arrays.xml
+    private ArrayList<Integer> randomAmount = new ArrayList<>(); //Liste med 25 elementer i random rekkefølge
     private int numberOfQuestions = 5; //default verdi dersom den fantes ikke i preferanser (just in case)
     private int whichQuestion = 0;
-    TextView txt_game_question;
-    TextView txt_right_awser;
-    TextView txt_wrong_awser;
     private int questionNumber = 0;
     private int rightAwser = 0;
     private int wrongAwser = 0;
     private int totalRightAnswer = 0;
     private int totalWrongAnswer = 0;
-    Dialog myDialog;
-    ImageButton btnClose, btn_restart, btn_yes, btn_no;
-
-    TextView txt_result_of, txt_result;
-    SharedPreferences sharedPreferences;
-    View view;
     private int number;
-    private ListView lvGame;
-    TextView txt_text;
+    private EditText newNumber;
+    private Dialog myDialog;
+    private ImageButton btnClose, btn_restart;
+    private TextView txt_game_question;
+    private TextView txt_right_awser;
+    private TextView txt_wrong_awser;
+    private TextView txt_question_number;
+    private TextView txt_question_total;
+    private TextView txt_result_of;
+    private TextView txt_result;
+    private SharedPreferences sharedPreferences;
+    ListView lvGame;
 
 
 
+    //Oppretter variabler spm brukes når vi lagrer ved rotasjon
     private static final String STATE_NUMBEROFQUESTION = "NumberOfQuestion";
     private static final String STATE_WHICHQUESTION = "WhitsQuestion";
-    private static final String STATE_SELECTEDQUESTION = "SelectedQuestion";
     private static final String STATE_QUESTIONNUMBER = "QuestionNumber";
     private static final String STATE_RIGHTAWSER = "RightAwser";
     private static final String STATE_WRONGAWSER = "WrongAwser";
+    private static final String STATE_RANDOM = "RandomQuestion";
+    private static final String STATE_NUMBER = "Number";
+
 
     //metoden som prøver å hente antall spørsmål fra sharedPreferences, gjør ingenting dersom den feiler
     private void setAmountOfQuestions(String preferance) {
@@ -86,13 +87,13 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         }
         return value;
     }
-
+    //Får opp en dialog boks hvis vi trykker på tilbakeknappen
     @Override
     public void onBackPressed() {
         DialogFragment dialog = new MyDialog();
         dialog.show(getFragmentManager(),"Avslutt");
     }
-
+    //Setter liktig spåk på siden.
     public void setLang(String prefix) {
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -103,7 +104,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         }
         res.updateConfiguration(cf,dm);
     }
-
+    //Fyller opp randomAmount array og shuffler det.
     public void randomArray(){
         randomAmount.clear();
         int i = 0;
@@ -119,6 +120,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Henter derdien vi trenger fra sheardprefferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         setLang(sharedPreferences.getString("languagePref",""));
         setAmountOfQuestions(sharedPreferences.getString("questionPref",""));
@@ -128,13 +130,16 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        randomArray();
 
+
+        randomArray(); //Oppretter rabdin arrat
+
+        //Akvivere knappenen og textview sånn at de kan brukes.
         newNumber = (EditText) findViewById(R.id.inp_newNumber);
-
         txt_game_question = (TextView)findViewById(R.id.txt_game_question);
         txt_right_awser = (TextView)findViewById(R.id.txt_right_awser);
         txt_wrong_awser = (TextView)findViewById(R.id.txt_wrong_awser);
+        txt_question_total = (TextView)findViewById(R.id.txt_question_total);
         Button btn_game_0 = (Button) findViewById(R.id.btn_game_0);
         Button btn_game_1 = (Button) findViewById(R.id.btn_game_1);
         Button btn_game_2 = (Button) findViewById(R.id.btn_game_2);
@@ -147,7 +152,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         Button btn_game_9 = (Button) findViewById(R.id.btn_game_9);
 
 
-
+        //ser hvilken verdi som er tastet inn og legger den inn i inputfelte.
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,6 +161,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             }
         };
 
+        //Kjører metoden listener hvis man trykker på kanppene
         btn_game_0.setOnClickListener(listener);
         btn_game_1.setOnClickListener(listener);
         btn_game_2.setOnClickListener(listener);
@@ -175,95 +181,82 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_game_question.setText(String.valueOf(questions[questionNumber]));
         txt_right_awser.setText(String.valueOf(rightAwser));
         txt_wrong_awser.setText(String.valueOf(wrongAwser));
+        txt_question_total.setText(String.valueOf(numberOfQuestions));
+
+        //Starter et spill med nextQuestion sånn at det ikke altid blir samme spørsmål som man starter med.
+        //den gjøres til det ikke er noen flere spørsmål
         nextQuestion();
 
-        myDialog = new Dialog(this);
-        myDialog.setCancelable(false);
+
+
     }
 
+    //Åpner en dialog boks som spør om du ønsker å avslutte
     public void btnExitGame(View view) {
-        myDialog = new Dialog(this);
-        myDialog.setContentView(R.layout.dialog_yes_no);
-        txt_text = (TextView) myDialog.findViewById(R.id.txt_text);
-        btn_yes = (ImageButton) myDialog.findViewById(R.id.btn_yes);
-        btn_no = (ImageButton) myDialog.findViewById(R.id.btn_no);
-
-        btn_yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myDialog.dismiss();
-                finish();
-            }
-        });
-        btn_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myDialog.dismiss();
-            }
-        });
-        txt_text.setText(R.string.sure_exit);
-        btn_yes.setImageResource(R.drawable.check_white);
-        myDialog.setCancelable(false);
-        myDialog.show();
-        /*
         DialogFragment dialog = new MyDialog();
         dialog.show(getFragmentManager(),"Avslutt");
-        //this.finish();
-        //startActivity(new Intent(this, StatisticsActivity.class));
-
-         */
     }
+
+    //Hvis man ønsker å fjeren teksten man har skrevet inn
     public void bntRemoveText(View view){
         newNumber.setText("");
     }
 
+    //Hvis man trykker jeg ønsker å avslutte spillet
     @Override
     public void onYesClick() {
         finish();
     }
 
+    //Hvis man ikke ønsker å avslutte spillet.
     @Override
     public void onNoClick() {
         //return;
     }
-
+    //Metoden som kjøres når du trykker på skjekk knappen.
     public void btnCheck(View view){
+        //Spiller lyd hvis man ikke har skrevet inn noe
+        final MediaPlayer nullinput = MediaPlayer.create(this, R.raw.null_input_sound);
+        //Skjekker om noe er skrevet inn
         if(!newNumber.getText().toString().isEmpty()){
             chechQuestion(view);
         }else{
+            nullinput.start();
             newNumber.setHint(R.string.accessiblity_input_number);
         }
 
     }
-
+    //Metoden som skjekker spørsmål
     public void chechQuestion(View view){
+        //Setter lydene her siden de bare skal brukes i denne metoden.
         final MediaPlayer rigthSound = MediaPlayer.create(this, R.raw.happykids);
         final MediaPlayer wrongSound = MediaPlayer.create(this, R.raw.boo);
+        //Henter inn veriden som ble skrevet inn
         String youAnswerd = newNumber.getText().toString();
-        if (youAnswerd.isEmpty()){
-            youAnswerd = "0";
-        }
+        //Skjekker om du har noen flere spørsmål igjen.
         if (whichQuestion < numberOfQuestions) {
-
+            //Legger inn svaret med spørsmålet inn i klassen sån at man kan bruke det senere
             Statistics anser = new Statistics(youAnswerd,answers[number],questions[number]);
-            statistics.add(anser);
-            Log.d(TAG, "chechQuestion: " + statistics.toString());
+            StatisticsBrain.statistics.add(anser);
 
+            //Hvis svaret er riktig så plusser den på riktig svar og spiller lyd.
             if (answers[number].equals(youAnswerd)){
                 rightAwser++;
                 txt_right_awser.setText(String.valueOf(rightAwser));
                 newNumber.setText("");
                 rigthSound.start();
             }
+            //Hvis svaret er feil så plusser den på feilsvar og spiller lyd.
             else {
                 wrongAwser++;
                 txt_wrong_awser.setText(String.valueOf(wrongAwser));
                 newNumber.setText("");
                 wrongSound.start();
             }
-            youAnswerd = "";
+            //Kjører metoden neste spørrsmål
             nextQuestion();
         }
+        //Når det er det siste sprøsmålet kjører den denne metoden
         else{
             if (answers[number].equals(newNumber.getText().toString())){
                 rightAwser++;
@@ -275,11 +268,11 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
                 txt_wrong_awser.setText(String.valueOf(wrongAwser));
                 wrongSound.start();
             }
-
+            //Legger inn statestikk
             Statistics anser = new Statistics(youAnswerd,answers[number],questions[number]);
-            statistics.add(anser);
-            Log.d(TAG, "chechQuestion: " + statistics.toString());
+            StatisticsBrain.statistics.add(anser);
 
+            //Viser popup med statestikk
             showPopup();
 
             //oppdatere session statistikk
@@ -290,71 +283,75 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             sharedPreferences.edit().putInt("stats_right", totalRightAnswer).apply();
             sharedPreferences.edit().putInt("stats_wrong", totalWrongAnswer).apply();
 
-            Log.d(TAG, statistics.toString());
 
         }
     }
-
+    //Finner det neste spørrsmålet fra en liste med tall som er i random rekkefølge
+    //sånn at du ikke nå bruke Math.random da det kan kasje hvis den ikke finne den siste på mange forskjøk
     public void nextQuestion() {
+        //nummer er hvilke spørsmål fra listen med spørsmål.
+        //randomAmount er en liste med tal i en random rekkefølge
         number = randomAmount.indexOf(whichQuestion);
+        //Finner id og skriver ut det som har skjedd
+        txt_question_number = (TextView)findViewById(R.id.txt_question_number);
         txt_game_question.setText(questions[number]);
+        //Øker hvilke spørsmål man er på og legger det inn sånn at man ka se hvor langt man har kommet seg.
         whichQuestion++;
+        txt_question_number.setText(String.valueOf(whichQuestion));
     }
 
-
+    //Metoden som lagrer informasjonen når du vir skjermen.
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putInt(STATE_NUMBEROFQUESTION, numberOfQuestions);
         outState.putInt(STATE_WHICHQUESTION, whichQuestion);
-        outState.putIntegerArrayList(STATE_SELECTEDQUESTION, selectedQuestions);
         outState.putInt(STATE_QUESTIONNUMBER, questionNumber);
         outState.putInt(STATE_RIGHTAWSER,rightAwser);
         outState.putInt(STATE_WRONGAWSER, wrongAwser);
-        myDialog = new Dialog(this);
+        outState.putIntegerArrayList(STATE_RANDOM, randomAmount);
+        outState.putInt(STATE_NUMBER,number);
         super.onSaveInstanceState(outState);
     }
-
-    @Override
-    protected void onPostResume() {
-        myDialog = new Dialog(this);
-        super.onPostResume();
-    }
-
+    //Henter ut informasjon og lagrer den i de satte variablene
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         numberOfQuestions = savedInstanceState.getInt(STATE_NUMBEROFQUESTION);
         whichQuestion = savedInstanceState.getInt(STATE_WHICHQUESTION);
-        selectedQuestions = savedInstanceState.getIntegerArrayList(STATE_SELECTEDQUESTION);
         questionNumber = savedInstanceState.getInt(STATE_QUESTIONNUMBER);
         rightAwser = savedInstanceState.getInt(STATE_RIGHTAWSER);
         wrongAwser = savedInstanceState.getInt(STATE_WRONGAWSER);
-        txt_game_question.setText(String.valueOf(questions[questionNumber]));
+        number = savedInstanceState.getInt(STATE_NUMBER);
+        txt_game_question.setText(String.valueOf(questions[number]));
         txt_right_awser.setText(String.valueOf(rightAwser));
         txt_wrong_awser.setText(String.valueOf(wrongAwser));
-
+        //Viser bare popup hvis spillet er fedrig
         if (numberOfQuestions == whichQuestion) {
             showPopup();
         }
-
     }
-
+    //Metode for å vise popup
     public void showPopup(){
+        //Oppretter en dialogbox og setter verdien til den custom_pop_up boks
         myDialog = new Dialog(this);
         myDialog.setContentView(R.layout.custon_pop_up);
+        //Henter ut informasjonen av det som er i popupen
         lvGame = (ListView) myDialog.findViewById(R.id.lvGame);
         txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
         txt_result_of = (TextView) myDialog.findViewById(R.id.txt_result_of);
-
-
         btnClose = (ImageButton) myDialog.findViewById(R.id.btn_Close);
         btn_restart = (ImageButton) myDialog.findViewById(R.id.btn_restart);
-        StratisticsAdapter feedAdapter = new StratisticsAdapter(this, R.layout.listview_row, statistics);
+
+        //Oppretter en StatestikAdaper for å hvise listen på den måten jeg ønsker
+        StratisticsAdapter feedAdapter = new StratisticsAdapter(this, R.layout.listview_row, StatisticsBrain.statistics);
+        //Oppretter listen med en bestemt adapter
         lvGame.setAdapter(feedAdapter);
 
+        //Metoder hvis du trykker på knappene
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                StatisticsBrain.statistics.clear();
                 myDialog.dismiss();
                 finish();
             }
@@ -364,35 +361,20 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
             public void onClick(View v) {
                 restartGame();
                 myDialog.dismiss();
+                StatisticsBrain.statistics.clear();
             }
         });
+        //Skriver ut verdiene
         txt_result.setText(String.valueOf(rightAwser));
         txt_result_of.setText(String.valueOf(numberOfQuestions));
+        //Gjør sånn at det ikke går ann å trykke utenfor
         myDialog.setCancelable(false);
+        //viser dialogboken.
         myDialog.show();
-
-
-        /*
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.greating);
-        builder.setMessage(rightAwser + " " + getString(R.string.of) + " " + numberOfQuestions + '\n' + statistics.toString());
-        builder.setPositiveButton("Igjen", new Dialog.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                restartGame();
-            }
-        });
-        builder.setNegativeButton(R.string.ikkeok, new Dialog.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                finish();
-            }
-        });
-        builder.setCancelable(false);
-        builder.show();
-
-         */
-
-
     }
+
+    //Restarter hele spille og setter alle verdien tilbake til de de var.
+    //Og setter fram et nytt spørsmål
     public void restartGame(){
 
         whichQuestion = 0;
@@ -401,7 +383,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         wrongAwser = 0;
         randomAmount.clear();
         randomArray();
-        statistics.clear();
+        StatisticsBrain.statistics.clear();
 
         newNumber.setText("");
         questions = getResources().getStringArray(R.array.questions);
@@ -412,10 +394,5 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_wrong_awser.setText(wrongAwser+"");
 
         nextQuestion();
-
-
     }
-
-
-
 }
