@@ -1,7 +1,5 @@
 package com.tobiasstrom.s331392mappe1comtobiasstrom;
 
-import java.util.ArrayList;
-
 public class Statistics {
     private String yourAnwser;
     private String rightAnwser;
@@ -14,13 +12,33 @@ public class Statistics {
         this.question = question;
     }
 
+    public String getYourAnwser() {
+        return yourAnwser;
+    }
+
+    public void setYourAnwser(String yourAnwser) {
+        this.yourAnwser = yourAnwser;
+    }
+
+    public String getRightAnwser() {
+        return rightAnwser;
+    }
+
+    public void setRightAnwser(String rightAnwser) {
+        this.rightAnwser = rightAnwser;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
     @Override
     public String toString() {
-        F
-        return '\n'+ "Statistics{" +
-                "yourAnwser=" + yourAnwser +
-                ", rightAnwser=" + rightAnwser +
-                ", question='" + question + '\'' +
-                '}';
+        return '\n'+
+                 "question=: " + question + " yourAnwser: " + yourAnwser + " rightAnwser: " + rightAnwser;
     }
 }
