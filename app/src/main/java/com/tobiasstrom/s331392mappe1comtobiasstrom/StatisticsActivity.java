@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 
 public class StatisticsActivity extends AppCompatActivity implements DialogReset.DialogClickListener {
+    //Setter variablen vi trenger
     private int right = 0;
     private int wrong = 0;
     //denne verdi er den som statistikkene skal få etter restet
@@ -46,7 +47,7 @@ public class StatisticsActivity extends AppCompatActivity implements DialogReset
         return value;
     }
 
-
+    //Dialogbox sånn at det ikke bare er å trykke feil på nullstill
     public void resetStats(View v) {
         DialogFragment dialog = new DialogReset();
         dialog.show(getFragmentManager(),"Reset");
@@ -69,13 +70,14 @@ public class StatisticsActivity extends AppCompatActivity implements DialogReset
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        //Henter verdien og setter land
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         setLang(sharedPreferences.getString("languagePref",""));
         right = getStats(sharedPreferences, "stats_right");
         wrong = getStats(sharedPreferences, "stats_wrong");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
+        //setter sånn at utsende blir bra.
         textViewRight = findViewById(R.id.txt_stats_correct);
         textViewWrong = findViewById(R.id.txt_stats_wrong);
         textViewRight.setText(String.valueOf(right));
@@ -83,6 +85,5 @@ public class StatisticsActivity extends AppCompatActivity implements DialogReset
     }
     public void btnExitStatistics(View view) {
         this.finish();
-        //startActivity(new Intent(this, StatisticsActivity.class));
     }
 }

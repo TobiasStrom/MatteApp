@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Liste med spørsmål-->
     <string-array name="questions">
         <!--Question 1-->
         <item>2+5</item>
@@ -54,6 +55,7 @@
         <!--Question test-->
         <item>6+4</item>
     </string-array>
+    <!--Liste med svar-->
     <string-array name="answers">
         <!--Question 1-->
         <item>7</item>
@@ -108,16 +110,20 @@
         <!--Question test-->
         <item>10</item>
     </string-array>
+    <!--Liste med de alternative i prefferanser med antall spørsmål-->
     <string-array name="questionAmount">
         <item>@string/question5</item>
         <item>@string/question10</item>
         <item>@string/question25</item>
     </string-array>
+    <!--Liste med verdien spørsmål antall-->
     <string-array name="questionAmountListValues">
         <item>5</item>
         <item>10</item>
         <item>25</item>
     </string-array>
+    <!--De forskjellige språkene vi kan velge mellom
+        Enneste stede vi skrive inn de-->
     <string-array name="chooseLanguage">
         <item>@string/norwegian</item>
         <item>@string/german</item>
