@@ -49,13 +49,15 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     private int totalRightAnswer = 0;
     private int totalWrongAnswer = 0;
     Dialog myDialog;
-    ImageButton btnClose;
-    ImageButton btn_restart;
+    ImageButton btnClose, btn_restart, btn_yes, btn_no;
+
     TextView txt_result_of, txt_result;
     SharedPreferences sharedPreferences;
     View view;
     private int number;
     private ListView lvGame;
+    TextView txt_text;
+
 
 
     private static final String STATE_NUMBEROFQUESTION = "NumberOfQuestion";
@@ -180,10 +182,36 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     }
 
     public void btnExitGame(View view) {
+        myDialog = new Dialog(this);
+        myDialog.setContentView(R.layout.dialog_yes_no);
+        txt_text = (TextView) myDialog.findViewById(R.id.txt_text);
+        btn_yes = (ImageButton) myDialog.findViewById(R.id.btn_yes);
+        btn_no = (ImageButton) myDialog.findViewById(R.id.btn_no);
+
+        btn_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+                finish();
+            }
+        });
+        btn_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        txt_text.setText(R.string.sure_exit);
+        btn_yes.setImageResource(R.drawable.check_white);
+        myDialog.setCancelable(false);
+        myDialog.show();
+        /*
         DialogFragment dialog = new MyDialog();
         dialog.show(getFragmentManager(),"Avslutt");
         //this.finish();
         //startActivity(new Intent(this, StatisticsActivity.class));
+
+         */
     }
     public void bntRemoveText(View view){
         newNumber.setText("");
