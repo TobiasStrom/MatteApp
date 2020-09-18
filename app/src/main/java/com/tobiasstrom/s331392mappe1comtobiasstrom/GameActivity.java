@@ -325,6 +325,7 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         txt_game_question.setText(String.valueOf(questions[number]));
         txt_right_awser.setText(String.valueOf(rightAwser));
         txt_wrong_awser.setText(String.valueOf(wrongAwser));
+        txt_question_number.setText(String.valueOf(whichQuestion));
         //Viser bare popup hvis spillet er fedrig
         if (numberOfQuestions == whichQuestion) {
             showPopup();
