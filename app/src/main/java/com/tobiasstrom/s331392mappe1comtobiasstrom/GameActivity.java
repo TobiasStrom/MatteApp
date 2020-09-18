@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import java.util.Collections;
 import java.util.Locale;
@@ -47,12 +49,13 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     private int totalRightAnswer = 0;
     private int totalWrongAnswer = 0;
     Dialog myDialog;
-    Button btnClose;
-    Button btn_restart;
+    ImageButton btnClose;
+    ImageButton btn_restart;
     TextView txt_result_of, txt_result;
     SharedPreferences sharedPreferences;
     View view;
     private int number;
+    private ListView lvGame;
 
 
     private static final String STATE_NUMBEROFQUESTION = "NumberOfQuestion";
@@ -108,6 +111,9 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         }
         Collections.shuffle(randomAmount);
     }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,7 +200,12 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
     }
 
     public void btnCheck(View view){
-        chechQuestion(view);
+        if(!newNumber.getText().toString().isEmpty()){
+            chechQuestion(view);
+        }else{
+            newNumber.setHint(R.string.accessiblity_input_number);
+        }
+
     }
 
     public void chechQuestion(View view){
@@ -262,23 +273,6 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         whichQuestion++;
     }
 
-    public void restartGame(){
-        whichQuestion = 0;
-        questionNumber = 0;
-        rightAwser = 0;
-        wrongAwser = 0;
-        //randomAmount.clear();
-        //randomArray();
-        statistics.clear();
-        newNumber.setText("");
-        questions = getResources().getStringArray(R.array.questions);
-        answers = getResources().getStringArray(R.array.answers);
-        txt_game_question.setText(questions[questionNumber]+ " =");
-        txt_right_awser.setText(rightAwser+"");
-        txt_wrong_awser.setText(wrongAwser+"");
-        nextQuestion();
-
-    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -298,7 +292,6 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         super.onPostResume();
     }
 
-
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -317,17 +310,19 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         }
 
     }
+
     public void showPopup(){
-        //myDialog = new Dialog(this); // Denne endret jeg på
-
-
-        /*txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
-        txt_result_of = (TextView) myDialog.findViewById(R.id.txt_result_of);
+        myDialog = new Dialog(this);
         myDialog.setContentView(R.layout.custon_pop_up);
-        //txt_result.setTextSize(50);
+        lvGame = (ListView) myDialog.findViewById(R.id.lvGame);
+        txt_result = (TextView) myDialog.findViewById(R.id.txt_result);
+        txt_result_of = (TextView) myDialog.findViewById(R.id.txt_result_of);
 
-        btnClose = (Button) myDialog.findViewById(R.id.btn_Close);
-        btn_restart = (Button) myDialog.findViewById(R.id.btn_restart);
+
+        btnClose = (ImageButton) myDialog.findViewById(R.id.btn_Close);
+        btn_restart = (ImageButton) myDialog.findViewById(R.id.btn_restart);
+        StratisticsAdapter feedAdapter = new StratisticsAdapter(this, R.layout.listview_row, statistics);
+        lvGame.setAdapter(feedAdapter);
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -343,13 +338,16 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
                 myDialog.dismiss();
             }
         });
-        //txt_result.setText("hei");
+        txt_result.setText(String.valueOf(rightAwser));
+        txt_result_of.setText(String.valueOf(numberOfQuestions));
+        myDialog.setCancelable(false);
         myDialog.show();
 
-        //txt_result.setText("Hei");*/
+
+        /*
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Spillen din ble ferdig");
-        builder.setMessage(rightAwser + " av: " + numberOfQuestions);
+        builder.setTitle(R.string.greating);
+        builder.setMessage(rightAwser + " " + getString(R.string.of) + " " + numberOfQuestions + '\n' + statistics.toString());
         builder.setPositiveButton("Igjen", new Dialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 restartGame();
@@ -362,6 +360,8 @@ public class GameActivity extends AppCompatActivity implements MyDialog.DialogCl
         });
         builder.setCancelable(false);
         builder.show();
+
+         */
 
 
     }

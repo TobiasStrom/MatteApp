@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,17 +46,38 @@ public class StratisticsAdapter extends ArrayAdapter {
         }
 
         Statistics currentApp = applications.get(position);
+        if (currentApp.getRightAnwser().equals(currentApp.getYourAnwser())){
+            viewHolder.tvQuestion.setText(currentApp.getQuestion());
+            viewHolder.tvRigth.setText(currentApp.getYourAnwser());
+            viewHolder.tvIcon.setImageResource(R.drawable.check);
+            viewHolder.txtLvRight.setText("");
+            viewHolder.tvNumber.setText("");
+        }else {
+            viewHolder.tvQuestion.setText(currentApp.getQuestion());
+            viewHolder.tvRigth.setText(currentApp.getYourAnwser());
+            viewHolder.tvIcon.setImageResource(R.drawable.cross);
+            //viewHolder.txtLvRight.setText(String.valueOf(R.string.right));
+            viewHolder.tvNumber.setText(currentApp.getRightAnwser());
+        }
+
+        //Statistics currentApp = applications.get(position);
         //viewHolder.tvRigth.setText(currentApp.getRightAnwser()+"");
         //viewHolder.tvNumber.setText(currentApp.getNumberQuestions()+"");
         return convertView;
     }
     private class ViewHolder{
+        final TextView tvQuestion;
         final TextView tvRigth;
         final TextView tvNumber;
+        final ImageView tvIcon;
+        final TextView txtLvRight;
 
         public ViewHolder(View v) {
+            this.tvQuestion = v.findViewById(R.id.QuestionName);
             this.tvRigth = v.findViewById(R.id.tvRigth);
             this.tvNumber = v.findViewById(R.id.tvNumber);
+            this.tvIcon = v.findViewById(R.id.tvIcon);
+            this.txtLvRight = v.findViewById(R.id.txtLvRight);
         }
     }
 
